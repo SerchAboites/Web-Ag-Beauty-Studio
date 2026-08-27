@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AG Beauty Studio | Salón de Belleza y Uñas en Tlalnepantla</title>
+    <meta name="description" content="AG Beauty Studio: Especialistas en uñas, body sculpting, depilación y maquillaje. Agenda tu cita en nuestro salón en Tlalnepantla de Baz.">
+    <meta name="keywords" content="uñas, salón de belleza, Tlalnepantla, body sculpting, maquillaje, AG Beauty Studio">
+    
+    <meta property="og:title" content="AG Beauty Studio | Salón de Belleza">
+    <meta property="og:description" content="Agenda tu cita. Especialistas en uñas, body sculpting y maquillaje.">
+    <meta property="og:image" content="./assets/images/og-image.jpg">
+    <meta property="og:url" content="https://www.tudominio.com">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthAndBeautyBusiness",
+      "name": "AG Beauty Studio",
+      "image": "https://www.tudominio.com/assets/images/logo.png",
+      "@id": "",
+      "url": "https://www.tudominio.com",
+      "telephone": "+520000000000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sindicato Nacional de Electricistas",
+        "addressLocality": "Tlalnepantla de Baz",
+        "addressRegion": "Estado de México",
+        "addressCountry": "MX"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "19:00"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">AG Beauty Studio</div>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </header>
+
+    <nav class="drawer-menu" id="drawer-menu">
+        <ul class="menu-links">
+            <li><a href="#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="#nosotros" class="nav-link">La Creadora</a></li>
+            <li><a href="#servicios" class="nav-link">Servicios</a></li>
+            <li><a href="#contacto" class="nav-link">Ubicación y Horarios</a></li>
+        </ul>
+        <div class="drawer-footer">
+            <a href="URL_DE_TU_AGENDA" class="btn-primary">Agendar Cita</a>
+        </div>
+    </nav>
+    <div class="overlay" id="overlay"></div>
+
+    <main class="scroll-container">
+        
+        <section id="inicio" class="screen-section hero-section">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="./assets/videos/hero-background.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="content fade-in">
+                <h1>Resalta tu belleza única</h1>
+                <p>Especialistas en uñas, skin care y body sculpting.</p>
+                <a href="URL_DE_TU_AGENDA" class="btn-primary pulse">Agendar ahora</a>
+            </div>
+        </section>
+
+        <section id="nosotros" class="screen-section about-section">
+            <div class="content">
+                <h2>Conoce a tu especialista</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Con más de 5 años de experiencia, en AG Beauty Studio nos enfocamos en brindarte un servicio personalizado. Somos Lashistas certificadas y expertas en el cuidado de tu piel.</p>
+                        <p>Trabajamos con los mejores productos para asegurar resultados impecables.</p>
+                    </div>
+                    <div class="about-image-placeholder">
+                        <span>[Foto de la Especialista]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="screen-section services-section">
+            <div class="content">
+                <h2>Nuestros Servicios</h2>
+                <ul class="services-list">
+                    <li>💅 Gel Nails & Manicure</li>
+                    <li>👁️ Lash Extensions</li>
+                    <li>🧘‍♀️ Body Sculpting</li>
+                    <li>💄 Makeup Profesional</li>
+                </ul>
+                <a href="URL_DE_TU_AGENDA" class="btn-secondary">Ver lista completa de precios</a>
+            </div>
+        </section>
+
+        <section id="contacto" class="screen-section contact-section">
+            <div class="content">
+                <h2>Visítanos</h2>
+                <div class="contact-info">
+                    <p><strong>Ubicación:</strong><br>Sindicato Nacional de Electricistas 30, Habitacional Electra, Tlalnepantla.</p>
+                    <p><strong>Horarios:</strong><br>Lun - Vie: 10:00 AM - 7:00 PM<br>Sáb: 9:00 AM - 7:00 PM<br>Dom: Cerrado</p>
+                </div>
+                <div class="social-links">
+                    <a href="LINK_INSTAGRAM">Instagram</a>
+                    <a href="LINK_FACEBOOK">Facebook</a>
+                </div>
+                <div class="map-placeholder">
+                    <span>[Mapa de Google Maps]</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
