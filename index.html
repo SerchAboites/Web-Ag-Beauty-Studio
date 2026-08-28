@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="es-MX">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AG Beauty Studio | Salón de Belleza y Uñas en Tlalnepantla</title>
-    <meta name="description" content="AG Beauty Studio: Especialistas en uñas, body sculpting, depilación y maquillaje. Agenda tu cita en nuestro salón en Tlalnepantla de Baz.">
+    <meta name="description"
+        content="AG Beauty Studio: Especialistas en uñas, body sculpting, depilación y maquillaje. Agenda tu cita en nuestro salón en Tlalnepantla de Baz.">
     <meta name="keywords" content="uñas, salón de belleza, Tlalnepantla, body sculpting, maquillaje, AG Beauty Studio">
-    
+
     <meta property="og:title" content="AG Beauty Studio | Salón de Belleza">
     <meta property="og:description" content="Agenda tu cita. Especialistas en uñas, body sculpting y maquillaje.">
     <meta property="og:image" content="./assets/images/og-image.jpg">
     <meta property="og:url" content="https://www.tudominio.com">
     <meta property="og:type" content="website">
+
+    <!-- Librería Leaflet para el Mapa Estético -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
     <script type="application/ld+json">
     {
@@ -48,6 +54,7 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header class="header">
@@ -73,17 +80,27 @@
     <div class="overlay" id="overlay"></div>
 
     <main class="scroll-container">
-        
+
+        <!-- SECCIÓN 1: Hero (Fondo de Imagen Animado) -->
         <section id="inicio" class="screen-section hero-section">
-            <video autoplay muted loop playsinline class="hero-video">
-                <source src="./assets/videos/hero-background.mp4" type="video/mp4">
-            </video>
+
+            <picture class="hero-bg">
+                <source media="(min-width: 768px)" srcset="./assets/Banner-Horizontal.jpg">
+                <img src="./assets/Banner-vertical-2.jpg" alt="Manicura y uñas elegantes en AG Beauty Studio"
+                    class="hero-bg-img">
+            </picture>
+
+            <!-- Contenedor para las partículas/pétalos flotantes -->
+            <div id="particles-container"></div>
+
             <div class="hero-overlay"></div>
             <div class="content fade-in">
                 <h1>Resalta tu belleza única</h1>
                 <p>Especialistas en uñas, skin care y body sculpting.</p>
-                <a href="URL_DE_TU_AGENDA" class="btn-primary pulse">Agendar ahora</a>
+
             </div>
+            <!-- Botón del Hero -->
+            <a href="URL_DE_TU_AGENDA" class="btn-animado hero-btn">Agendar ahora</a>
         </section>
 
         <section id="nosotros" class="screen-section about-section">
@@ -91,11 +108,15 @@
                 <h2>Conoce a tu especialista</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>Con más de 5 años de experiencia, en AG Beauty Studio nos enfocamos en brindarte un servicio personalizado. Somos Lashistas certificadas y expertas en el cuidado de tu piel.</p>
+                        <p>Con más de 5 años de experiencia, en AG Beauty Studio nos enfocamos en brindarte un servicio
+                            personalizado. Somos Lashistas certificadas y expertas en el cuidado de tu piel.</p>
                         <p>Trabajamos con los mejores productos para asegurar resultados impecables.</p>
                     </div>
-                    <div class="about-image-placeholder">
-                        <span>[Foto de la Especialista]</span>
+                    <!-- Reemplaza el div de class="about-image-placeholder" con esto -->
+                    <div class="about-image-wrapper">
+                        <!-- Sube una foto cuadrada tuya o de la dueña a la carpeta assets -->
+                        <img src="./assets/foto-especialista.jpg" alt="Especialista de AG Beauty Studio"
+                            class="profile-pic">
                     </div>
                 </div>
             </div>
@@ -118,21 +139,40 @@
             <div class="content">
                 <h2>Visítanos</h2>
                 <div class="contact-info">
-                    <p><strong>Ubicación:</strong><br>Sindicato Nacional de Electricistas 30, Habitacional Electra, Tlalnepantla.</p>
-                    <p><strong>Horarios:</strong><br>Lun - Vie: 10:00 AM - 7:00 PM<br>Sáb: 9:00 AM - 7:00 PM<br>Dom: Cerrado</p>
+                    <p><strong>Ubicación:</strong><br>Sindicato Nacional de Electricistas 30, Habitacional Electra,
+                        Tlalnepantla.</p>
+                    <p><strong>Horarios:</strong><br>Lun - Vie: 10:00 AM - 7:00 PM<br>Sáb: 9:00 AM - 7:00 PM<br>Dom:
+                        Cerrado</p>
                 </div>
                 <div class="social-links">
-                    <a href="LINK_INSTAGRAM">Instagram</a>
-                    <a href="LINK_FACEBOOK">Facebook</a>
+                    <a href="https://www.instagram.com/angelagarcia_beautystudio/">Instagram</a>
+                    <a href="https://www.facebook.com/angelalashesoficial/">Facebook</a>
                 </div>
+
                 <div class="map-placeholder">
-                    <span>[Mapa de Google Maps]</span>
+                    <div id="map"></div>
+
+                    <!-- Botón de cristal rosa con animación -->
+                    <a href="https://maps.app.goo.gl/5u8mhJ344Rk4gRUf9" target="_blank" class="btn-indicaciones">
+                        Cómo llegar
+                    </a>
                 </div>
+
             </div>
         </section>
 
     </main>
 
+    <!-- Botón Flotante Circular (Abajo a la Izquierda) -->
+    <a href="URL_DE_TU_AGENDA" id="btn-flotante-circular" class="btn-animado" aria-label="Agendar Cita">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="calendar-icon">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+        </svg>
+    </a>
+
     <script src="script.js"></script>
 </body>
+
 </html>

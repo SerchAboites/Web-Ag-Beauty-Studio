@@ -1,9 +1,22 @@
+/* Importación de tipografías elegantes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
 /* Variables y Reset */
 :root {
-    --primary-color: #8A4FFF; /* Un morado vibrante, ajusta al branding */
-    --bg-dark: #121212;
-    --text-light: #F5F5F5;
-    --font-main: 'Helvetica Neue', Arial, sans-serif;
+    /* Paleta Dorado Champagne */
+    --primary-color: #C29B62;    
+    --primary-hover: #D8B47D;    
+    
+    /* Tema Dusty Rose (Rosa de la fotografía) */
+    --bg-main: #E6D0D3;          /* Rosa empolvado base */
+    --bg-surface: #F2E8E9;       /* Rosa ultra claro para cajas translúcidas */
+    --text-main: #3A2E29;        /* Marrón un poco más oscuro para contraste */
+    --text-light: #FFFFFF;       
+    --text-muted: #8A7970;       
+    
+    /* Tipografías */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
 }
 
 * {
@@ -13,10 +26,16 @@
 }
 
 body {
-    font-family: var(--font-main);
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    overflow: hidden; /* Oculta el scroll del body, usaremos el main */
+    font-family: var(--font-body);
+    font-weight: 300; 
+    background-color: var(--bg-main);
+    
+    /* Patrón de flor/estrella de 4 pétalos (Líneas finas elegantes) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.20' d='M30 0 Q 36 24, 60 30 Q 36 36, 30 60 Q 24 36, 0 30 Q 24 24, 30 0 Z' /%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    
+    color: var(--text-main);
+    overflow: hidden; 
 }
 
 /* Header */
@@ -27,20 +46,33 @@ body {
     width: 100%;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+
+    /* Efecto Glassmorphism
+    background: rgba(230, 208, 211, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); */
+
+    border: none; /* Línea de luz inferior */
 }
 
 .logo {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+    color: white;
     letter-spacing: 1px;
+    /* Sombra sutil para separarlo del fondo */
+    text-shadow: 0px 2px 4px rgba(58, 46, 41, 0.15);
 }
 
 /* Botón Hamburguesa */
 .hamburger-btn {
+    position: absolute; /* Ancla el menú a la izquierda sin empujar el logo */
+    left: 20px;
     background: none;
     border: none;
     cursor: pointer;
@@ -52,25 +84,38 @@ body {
 
 .hamburger-btn .bar {
     width: 30px;
-    height: 3px;
-    background-color: var(--text-light);
+    height: 2px; 
+    background-color: #FFFFFF; /* Menú hamburguesa blanco */
     transition: 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Sombreado sutil para que resalte sobre fondos claros */
+}
+
+/* Elimina el recuadro negro al hacer clic en móviles */
+.hamburger-btn:focus,
+.hamburger-btn:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Drawer Menu */
 .drawer-menu {
     position: fixed;
     top: 0;
-    left: -300px; /* Oculto a la izquierda */
+    left: -300px;
     width: 300px;
     height: 100dvh;
-    background-color: #1a1a1a;
+    /* Efecto Glassmorphism */
+    background-color: rgba(242, 232, 233, 0.5); /* Blanco/rosa roto translúcido */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-right: none; /* Borde luminoso */
     z-index: 99;
     padding: 80px 30px;
     transition: left 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 5px 0 25px rgba(74, 60, 53, 0.08);
 }
 
 .drawer-menu.open {
@@ -82,14 +127,22 @@ body {
 }
 
 .menu-links li {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .nav-link {
-    color: var(--text-light);
+    font-family: var(--font-heading);
+    color: var(--text-light); /* Texto en blanco puro */
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    padding-left: 8px;
+    font-style: italic;
 }
 
 .overlay {
@@ -98,7 +151,7 @@ body {
     left: 0;
     width: 100%;
     height: 100dvh;
-    background: rgba(0,0,0,0.5);
+    background: rgba(74, 60, 53, 0.5); /* Overlay marrón oscuro translúcido */
     z-index: 98;
     display: none;
 }
@@ -121,19 +174,32 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 20px;
+    /* 100px arriba para el header, 120px abajo para el botón flotante */
+    padding: 100px 20px 120px 20px; 
     text-align: center;
 }
 
-/* Hero Section (Fondo de Video) */
-.hero-video {
+/* Hero Section (Fondo de Imagen Responsive) */
+.hero-bg, .hero-bg-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* Enfocamos el 80% hacia abajo para que las manos suban en el móvil */
+    object-position: center 85%; 
     z-index: -2;
+}
+
+/* Devolvemos el enfoque al centro solo para la versión de escritorio */
+@media (min-width: 768px) {
+    .content {
+        margin-bottom: 0;
+    }
+    .btn-primary {
+        margin-top: 20px;
+    }
 }
 
 .hero-overlay {
@@ -142,62 +208,587 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    /* Un degradado que oscurece los bordes y deja el centro más claro */
+    background: linear-gradient(to bottom, rgba(74, 60, 53, 0.4) 0%, rgba(74, 60, 53, 0.1) 50%, rgba(74, 60, 53, 0.4) 100%);
     z-index: -1;
 }
 
+/* Limita el desbordamiento del zoom en el Hero */
+.hero-section {
+    padding: 20px;
+    overflow: hidden;
+    position: relative; 
+}
+
+/* Sombreado para que el texto resalte sobre fondos claros */
+.hero-section .content h1 {
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section .content p {
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 400; /* Lo hacemos un poquito más grueso para leerlo mejor */
+}
+
+/* Solo en el Hero el texto es blanco por el video de fondo */
+.hero-section .content {
+    color: var(--text-light);
+}
+
 .content {
-    z-index: 1;
+    z-index: 2;
+    position: relative;
     max-width: 600px;
     width: 100%;
+    /* Empuja todo el bloque hacia arriba en móviles para no tapar las uñas */
+    margin-bottom: 12vh; 
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 10px; }
-h2 { font-size: 2rem; margin-bottom: 20px; color: var(--primary-color); }
-p { font-size: 1.1rem; margin-bottom: 20px; line-height: 1.5; }
+h1, h2 {
+    font-family: var(--font-heading);
+}
 
-/* Botones */
+h1 { 
+    font-size: 3rem; 
+    margin-bottom: 15px; 
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+h2 { 
+    font-size: 2.2rem; 
+    margin-bottom: 35px; /* Más aire debajo del título para separar del texto */
+    color: var(--primary-color); 
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+p { 
+    font-size: 1.05rem; 
+    margin-bottom: 20px; 
+    line-height: 1.6; 
+}
+
+/* Botones estilo Dorado/Elegante */
 .btn-primary, .btn-secondary {
+    font-family: var(--font-body);
     display: inline-block;
-    padding: 15px 30px;
-    border-radius: 30px;
+    padding: 14px 32px;
+    border-radius: 40px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    transition: transform 0.2s;
+    letter-spacing: 2px; /* Espaciado de letras elegante */
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
 }
 
-.btn-primary { background-color: var(--primary-color); color: #fff; margin-top: 20px; }
-.btn-secondary { border: 2px solid var(--primary-color); color: var(--text-light); margin-top: 20px; }
-.btn-primary:active, .btn-secondary:active { transform: scale(0.95); }
+.btn-primary { 
+    background-color: var(--primary-color); 
+    color: var(--text-light); 
+    /* Mayor separación entre la descripción y el botón */
+    margin-top: 100px; 
+    border: none;
+    box-shadow: 0 8px 20px rgba(194, 155, 98, 0.25); 
+}
 
-/* Listas y Grids (Diseño modular) */
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4); 
+}
+
+.btn-secondary { 
+    border: 1px solid var(--primary-color); 
+    color: var(--primary-color); 
+    background-color: transparent;
+    margin-top: 20px; 
+}
+
+.btn-secondary:hover {
+    background-color: rgba(194, 155, 98, 0.08);
+}
+
+.btn-primary:active, .btn-secondary:active { 
+    transform: scale(0.96); 
+}
+
+/* Listas y Grids (Diseño modular estilo caja de las imágenes) */
 .services-list {
     list-style: none;
     text-align: left;
     margin: 0 auto 30px auto;
-    max-width: 300px;
-}
-.services-list li {
-    font-size: 1.2rem;
-    padding: 10px 0;
-    border-bottom: 1px solid #333;
+    max-width: 320px;
+    background: var(--bg-surface);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(74, 60, 53, 0.05);
 }
 
-.about-image-placeholder, .map-placeholder {
-    background: #333;
-    height: 200px;
-    border-radius: 10px;
+.services-list li {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(194, 155, 98, 0.15);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+}
+
+.services-list li:last-child {
+    border-bottom: none;
+}
+
+/* Viñeta dorada para los servicios */
+.services-list li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-right: 10px;
+    line-height: 0;
+}
+
+/* Contenedor principal: relativo para que el botón se posicione dentro de este espacio */
+.map-placeholder {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Ajusta la altura según necesites */
+    background-color: #e0e0e0; /* Tu mapa gris */
+    border-radius: 12px; /* Opcional, para redondear las esquinas del contenedor */
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+
+
+/* Botón flotante estilo cristal rosa (Estilizado) */
+.btn-indicaciones {
+    position: absolute;
+    bottom: 16px; /* Lo bajamos un poco para alinearlo mejor con tu otro botón */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; 
+
+    /* Diseño Glassmorphism (Cristal) */
+    background: rgba(255, 103, 179, 0.486); /* Un rosa un poco más suave y elegante */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    
+    /* Tipografía y forma ajustadas */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px; /* Letra un poco más pequeña */
+    padding: 8px 24px; /* Redujimos el alto (8px) y el ancho (24px) */
+    border-radius: 50px; 
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); /* Sombra más suave */
+
+    /* Animación */
+    animation: pulso-rosa 2s infinite;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* El efecto hover se mantiene igual */
+.btn-indicaciones:hover {
+    background: rgba(255, 105, 180, 0.9); 
+    transform: translateX(-50%) scale(1.05); 
+}
+
+/* Keyframes para la animación de atención */
+@keyframes pulso-rosa {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 20, 147, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 20, 147, 0);
+    }
+}
+
+/* Estilo para la foto de la creadora (Retrato Circular) */
+.about-image-wrapper {
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #888;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* La hace un círculo perfecto */
+    object-fit: cover; /* Evita que la foto se deforme */
+    border: 3px solid var(--primary-color); /* Anillo dorado */
+    padding: 5px; /* Crea un doble anillo visual con el fondo translúcido */
+    background: rgba(255, 255, 255, 0.4); /* Respaldo cristalino */
+    box-shadow: 0 10px 30px rgba(194, 155, 98, 0.3); /* Resplandor dorado debajo */
+}
+
+.social-links {
     margin-top: 20px;
 }
 
 .social-links a {
     color: var(--primary-color);
-    margin: 0 10px;
+    margin: 0 12px;
     text-decoration: none;
-    font-weight: bold;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-style: italic;
+    transition: color 0.3s ease;
 }
+
+.social-links a:hover {
+    color: var(--primary-hover);
+}
+
+
+
+/* Animación Zoom In y Out para el Hero */
+.hero-bg-img {
+    /* La animación dura 20 segundos, es muy suave y se repite en bucle alternando dirección */
+    animation: smoothZoom 20s ease-in-out infinite alternate;
+    transform-origin: center;
+}
+
+@keyframes smoothZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); } /* Hace un zoom del 15% */
+}
+
+
+
+
+
+/* Animación de flotar hacia arriba y girar */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% { opacity: 0.5; } /* Aparece suavemente */
+    80% { opacity: 0.4; } /* Se empieza a desvanecer */
+    100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+
+
+/* Aseguramos que el texto principal esté por encima de todo */
+.content {
+    z-index: 2;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 0; /* Quitamos el margen para que el texto quede bien centrado */
+}
+/* Contenedor de Partículas */
+#particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Por encima del overlay oscuro */
+    pointer-events: none;
+}
+
+/* Partículas (Polvo Dorado) */
+.particle {
+    position: absolute;
+    bottom: -20px;
+    /* Usamos un color fijo dorado/nude en lugar de variable para asegurar que pinte */
+    background-color: #D8B47D; 
+    border-radius: 50%; /* Esto los convierte en círculos perfectos */
+    box-shadow: 0 0 10px rgba(194, 155, 98, 0.8), 0 0 20px rgba(194, 155, 98, 0.5); /* Brillo */
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    10% { opacity: 0.8; }
+    80% { opacity: 0.5; }
+    100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+
+/* Custom Scrollbar para el contenedor principal */
+.scroll-container {
+    /* Para navegadores estándar (Firefox) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-surface);
+}
+
+/* Para navegadores Webkit (Chrome, Safari, Edge) */
+.scroll-container::-webkit-scrollbar {
+    width: 8px; /* Barra delgada */
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: var(--bg-surface); /* Fondo rosado claro */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Color dorado */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid var(--bg-surface); /* Espacio interior para que se vea más fina */
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-hover);
+}
+
+
+/* =========================================
+   SISTEMA DE ANIMACIÓN: BORDER SNAKE
+   ========================================= */
+.btn-animado {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent;
+    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4);
+    transition: transform 0.2s;
+    text-decoration: none;
+    z-index: 2; /* Para que quede sobre el fondo del Hero */
+}
+
+.btn-animado:active {
+    transform: scale(0.96);
+}
+
+/* Luz giratoria (Border Snake) */
+.btn-animado::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: conic-gradient(
+        transparent 0%, 
+        rgba(253, 146, 221, 0.9) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.9) 75%, 
+        transparent 75%
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: borderSnake 2.5s linear infinite;
+    z-index: -2;
+}
+
+/* Relleno de Cristal Dorado */
+.btn-animado::after {
+    content: '';
+    position: absolute;
+    inset: 2px; 
+    background-color: rgba(194, 155, 98, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: -1;
+    transition: background-color 0.3s;
+}
+
+.btn-animado:hover::after {
+    background-color: rgba(194, 155, 98, 0.65);
+}
+
+/* =========================================
+   DISEÑO ESPECÍFICO DE CADA BOTÓN
+   ========================================= */
+
+/* 1. Botón del Hero (Forma de Píldora - Anclado al fondo) */
+.hero-btn {
+    position: absolute;
+    bottom: 40px; /* Lo pega a la parte inferior de la primera foto */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Centrado horizontal perfecto */
+    width: max-content;
+    
+    display: inline-block;
+    color: var(--text-light);
+    font-family: var(--font-body);
+    padding: 14px 32px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 40px; 
+}
+.hero-btn::after {
+    border-radius: 40px;
+}
+
+
+/* 2. Botón Flotante Global (Circular) */
+#btn-flotante-circular {
+    position: fixed;
+    bottom: 30px;
+    left: 20px; 
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 90;
+    
+    /* Estado inicial: Oculto y un poco más abajo */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.9);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+}
+
+#btn-flotante-circular::after {
+    border-radius: 50%; 
+}
+
+/* Clase que JavaScript le agregará para mostrarlo */
+#btn-flotante-circular.show-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+
+.calendar-icon {
+    width: 26px;
+    height: 26px;
+    color: var(--text-light);
+    z-index: 1; /* El icono blanco sobre el cristal */
+}
+
+/* Motor de la rotación */
+@keyframes borderSnake {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* Cajas de contenido con efecto translúcido elegante */
+.services-list, .about-image-placeholder, .map-placeholder {
+    background: rgba(255, 255, 255, 0.4); /* Fondo más transparente */
+    backdrop-filter: blur(8px); /* Desenfoca el fondo rosado creando efecto cristal */
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Borde blanco delgado para definir la forma */
+    box-shadow: 0 8px 32px rgba(58, 46, 41, 0.04); /* Sombra muy suave para dar profundidad */
+}
+
+
+/* Botón animado (Border Snake y Cristal) para el menú lateral */
+.drawer-menu .btn-primary {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent; /* Quitamos el fondo sólido */
+    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4);
+    color: var(--text-light);
+    border: none;
+    text-align: center;
+}
+
+/* La luz giratoria del botón del menú */
+.drawer-menu .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: conic-gradient(
+        transparent 0%, 
+        rgba(255, 255, 255, 0.9) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.9) 75%, 
+        transparent 75%
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: borderSnake 2.5s linear infinite;
+    z-index: -2;
+}
+
+/* El relleno de cristal esmerilado */
+.drawer-menu .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-color: rgba(194, 155, 98, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 40px;
+    z-index: -1;
+    transition: background-color 0.3s;
+}
+
+.drawer-menu .btn-primary:hover::after {
+    background-color: rgba(194, 155, 98, 0.65);
+}
+
+/* Ajustes del mapa Leaflet */
+.map-placeholder {
+    padding: 0; 
+    overflow: hidden; 
+    position: relative;
+    /* Mantenemos el efecto cristal en el borde */
+}
+
+
+
+/* Mapa convertido a blanco y gris estético */
+#map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* 
+      1. grayscale(1): Elimina todos los colores.
+      2. brightness(1.15): Aclara el fondo gris oscuro para volverlo casi blanco.
+      3. contrast(0.85): Suaviza los textos para que se vean grises y no negros fuertes.
+    */
+    filter: grayscale(1) brightness(1.15) contrast(0.85); 
+}
+
+.map-link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    cursor: pointer;
+}
+
+/* 2. El "papel celofán" rosa que lo tiñe perfectamente */
+.map-placeholder::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-main);
+    mix-blend-mode: multiply; 
+    z-index: 2; 
+    pointer-events: none; 
+    
+    /* Controla qué tan fuerte es el filtro rosa. Prueba valores entre 0.3 y 0.8 */
+    opacity: 0.3; 
+}
+
+
+
