@@ -11,8 +11,8 @@
 
     <meta property="og:title" content="AG Beauty Studio | Salón de Belleza">
     <meta property="og:description" content="Agenda tu cita. Especialistas en uñas, body sculpting y maquillaje.">
-    <meta property="og:image" content="./assets/images/og-image.jpg">
-    <meta property="og:url" content="https://www.tudominio.com">
+    <meta property="og:image" content="https://agbeauty.studio/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://agbeauty.studio">
     <meta property="og:type" content="website">
 
     <!-- Librería Leaflet para el Mapa Estético -->
@@ -22,31 +22,105 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "HealthAndBeautyBusiness",
-      "name": "AG Beauty Studio",
-      "image": "https://www.tudominio.com/assets/images/logo.png",
-      "@id": "",
-      "url": "https://www.tudominio.com",
-      "telephone": "+520000000000",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Sindicato Nacional de Electricistas",
-        "addressLocality": "Tlalnepantla de Baz",
-        "addressRegion": "Estado de México",
-        "addressCountry": "MX"
-      },
-      "openingHoursSpecification": [
+      "@graph": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "10:00",
-          "closes": "19:00"
+          "@type": "HealthAndBeautyBusiness",
+          "name": "AG Beauty Studio",
+            "image": "https://agbeauty.studio/assets/images/logo.png",
+            "@id": "https://agbeauty.studio/#studio",
+            "url": "https://agbeauty.studio",
+          "telephone": "+525548030506",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Sindicato Nacional de Electricistas 30, Habitacional Electra",
+            "addressLocality": "Tlalnepantla de Baz",
+            "addressRegion": "Estado de México",
+            "addressCountry": "MX"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 19.527243,
+            "longitude": -99.221119
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "10:00",
+              "closes": "19:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "09:00",
+              "closes": "19:00"
+            }
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "24" 
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Catálogo de Servicios de Belleza",
+            "itemListElement": [
+              {
+                "@type": "OfferCatalog",
+                "name": "Uñas",
+                "itemListElement": [
+                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Manicura y Pedicure"}},
+                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Uñas Acrílicas, Gelish, Rubber y Soft Gel"}}
+                ]
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Pestañas y Cejas",
+                "itemListElement": [
+                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Extensiones de pestañas y Lash Lifting"}},
+                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diseño con Henna y Laminado de Cejas"}}
+                ]
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Depilación y Capilares",
+                "itemListElement": [
+                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Depilación Facial y Corporal"}},
+                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Alaciado progresivo y tratamientos antifrizz"}}
+                ]
+              }
+            ]
+          }
         },
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "19:00"
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Con cuánto tiempo de anticipación debo agendar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Te recomendamos agendar con al menos 2 a 3 días de anticipación para asegurar el horario de tu preferencia a través de nuestra plataforma."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Puedo confirmar varias fechas en un solo mensaje?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para garantizar la mejor organización y evitar confusiones, el sistema automatizado de WhatsApp procesa y confirma las citas de manera individual. Si deseas reservar para distintos días, solo debes generar una confirmación por cada fecha."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Tienen tolerancia de retardo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí, brindamos 10 minutos de tolerancia. Posterior a este tiempo, la cita podría ser reagendada para respetar el tiempo de las siguientes clientas."
+              }
+            }
+          ]
         }
       ]
     }
@@ -71,10 +145,13 @@
             <li><a href="#inicio" class="nav-link">Inicio</a></li>
             <li><a href="#nosotros" class="nav-link">La Creadora</a></li>
             <li><a href="#servicios" class="nav-link">Servicios</a></li>
+            <li><a href="#faq" class="nav-link">Preguntas</a></li>
+            <li><a href="#resenas" class="nav-link">Reseñas</a></li>
             <li><a href="#contacto" class="nav-link">Ubicación y Horarios</a></li>
         </ul>
         <div class="drawer-footer">
-            <a href="https://app-agenda-pro.netlify.app/public/app-agenda/cliente-reserva.html?salon=fhwe3Fd1w0Tpd2Ieg9lMwOUiGC12" class="btn-primary">Agendar Cita</a>
+            <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1"
+                class="btn-primary">Agendar Cita</a>
         </div>
     </nav>
     <div class="overlay" id="overlay"></div>
@@ -100,7 +177,9 @@
 
             </div>
             <!-- Botón del Hero -->
-            <a href="https://app-agenda-pro.netlify.app/public/app-agenda/cliente-reserva.html?salon=fhwe3Fd1w0Tpd2Ieg9lMwOUiGC12" class="btn-animado hero-btn">Agendar ahora</a>
+            <!-- Botón del Hero -->
+            <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1"
+                class="btn-animado hero-btn">Agendar ahora</a>
         </section>
 
         <section id="nosotros" class="screen-section about-section">
@@ -124,16 +203,104 @@
 
         <section id="servicios" class="screen-section services-section">
             <div class="content">
-                <h2>Nuestros Servicios</h2>
-                <ul class="services-list">
-                    <li>💅 Gel Nails & Manicure</li>
-                    <li>👁️ Lash Extensions</li>
-                    <li>🧘‍♀️ Body Sculpting</li>
-                    <li>💄 Makeup Profesional</li>
-                </ul>
-                <a href="https://app-agenda-pro.netlify.app/public/app-agenda/cliente-reserva.html?salon=fhwe3Fd1w0Tpd2Ieg9lMwOUiGC12" class="btn-secondary">Ver lista completa de precios</a>
+                <h2>Nuestro Catálogo</h2>
+
+                <div class="services-catalog">
+                    <div class="service-category">
+                        <h3>✨ Uñas</h3>
+                        <p>Manicura, Pedicure, Acrílico, Gelish, Rubber, Soft Gel, Retoques y Retiros.</p>
+                    </div>
+
+                    <div class="service-category">
+                        <h3>👁️ Pestañas y Cejas</h3>
+                        <p>Extensiones (Clásica, Híbrida, Mega volumen, Hawaiano), Lash Lifting, Diseño con Henna y
+                            Laminado.</p>
+                    </div>
+
+                    <div class="service-category">
+                        <h3>✨ Depilación</h3>
+                        <p>Facial completa (Ceja, Bigote, Patillas) y Corporal (Axila, Media pierna, Pierna completa).
+                        </p>
+                    </div>
+
+                    <div class="service-category">
+                        <h3>💆‍♀️ Capilares</h3>
+                        <p>Tratamientos antifrizz, Hidratación, Cabello chino y Alaciado progresivo.</p>
+                    </div>
+                </div>
+
+                <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1"
+                    class="btn-secondary">Ver lista completa de precios y agendar</a>
             </div>
         </section>
+
+
+        <section id="faq" class="screen-section faq-section">
+            <div class="content">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="faq-container">
+                    <details class="faq-item">
+                        <summary>¿Con cuánto tiempo de anticipación debo agendar?</summary>
+                        <p>Te recomendamos agendar con al menos 2 a 3 días de anticipación para asegurar el horario de
+                            tu preferencia a través de nuestra plataforma.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Puedo confirmar varias fechas en un solo mensaje?</summary>
+                        <p>Para garantizar la mejor organización y evitar confusiones, el sistema automatizado de
+                            WhatsApp procesa y confirma las citas de manera individual. Si deseas reservar para
+                            distintos días, solo debes generar una confirmación por cada fecha.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Tienen tolerancia de retardo?</summary>
+                        <p>Sí, brindamos 10 minutos de tolerancia. Posterior a este tiempo, la cita podría ser
+                            reagendada para respetar el tiempo de las siguientes clientas.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>¿Qué métodos de pago aceptan?</summary>
+                        <p>Aceptamos pagos en efectivo, transferencias bancarias y tarjetas, todo para tu mayor
+                            comodidad al momento de visitarnos.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="resenas" class="screen-section reviews-section">
+            <div class="content">
+                <h2>Lo que dicen nuestras clientas</h2>
+
+                <div class="reviews-container">
+                    <div class="review-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Excelente servicio, mis uñas quedaron hermosas y el trato es súper amable. ¡Súper
+                            recomendado, el mejor lugar de la zona!"</p>
+                        <h4>- Ana L.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Me encantó el lifting de pestañas. El estudio es muy bonito y limpio, crean un ambiente
+                            súper relajante para desconectar."</p>
+                        <h4>- María G.</h4>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Son muy profesionales. Me hice un alaciado y body sculpting, los resultados fueron
+                            increíbles desde la primera sesión."</p>
+                        <h4>- Sofía R.</h4>
+                    </div>
+                </div>
+
+                <!-- Este enlace ya apunta a tu Google Maps -->
+                <a href="https://maps.app.goo.gl/5u8mhJ344Rk4gRUf9" target="_blank" class="btn-secondary">Ver más en
+                    Google Maps</a>
+            </div>
+        </section>
+
 
         <section id="contacto" class="screen-section contact-section">
             <div class="content">
@@ -164,7 +331,9 @@
     </main>
 
     <!-- Botón Flotante Circular (Abajo a la Izquierda) -->
-    <a href="https://app-agenda-pro.netlify.app/public/app-agenda/cliente-reserva.html?salon=fhwe3Fd1w0Tpd2Ieg9lMwOUiGC12" id="btn-flotante-circular" class="btn-animado" aria-label="Agendar Cita">
+    <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1" id="btn-flotante-circular"
+        class="btn-animado" aria-label="Agendar Cita">
+        
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="calendar-icon">
             <path stroke-linecap="round" stroke-linejoin="round"

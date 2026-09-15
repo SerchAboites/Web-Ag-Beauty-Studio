@@ -792,3 +792,172 @@ p {
 
 
 
+/* =========================================
+   NUEVO CATÁLOGO DE SERVICIOS (SEO)
+   ========================================= */
+.services-catalog {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .services-catalog {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en PC */
+    }
+}
+
+.service-category {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 15px rgba(58, 46, 41, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.service-category:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.service-category h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.service-category p {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   SECCIÓN PREGUNTAS FRECUENTES (FAQ)
+   ========================================= */
+.faq-container {
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(58, 46, 41, 0.05);
+}
+
+.faq-item summary {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none; /* Oculta la flecha fea por defecto */
+    position: relative;
+    outline: none;
+}
+
+/* Para ocultar la flecha en navegadores WebKit */
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Símbolo + personalizado */
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    line-height: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+/* Símbolo - cuando está abierto */
+.faq-item[open] summary::after {
+    content: '−';
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.faq-item p {
+    padding: 0 20px 16px 20px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   SECCIÓN DE RESEÑAS (CARRUSEL HORIZONTAL)
+   ========================================= */
+.reviews-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    
+    /* Ocultar barra de scroll en navegadores estándar */
+    scrollbar-width: none; 
+}
+
+/* Ocultar barra de scroll en WebKit (Chrome, Safari, iOS) */
+.reviews-container::-webkit-scrollbar {
+    display: none;
+}
+
+.review-card {
+    /* Ocupa el 85% del ancho de la pantalla para que asome la siguiente tarjeta */
+    flex: 0 0 85%; 
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 15px rgba(58, 46, 41, 0.05);
+    text-align: left;
+}
+
+.review-card .stars {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.review-card p {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.review-card h4 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
