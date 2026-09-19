@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleMenu = () => {
         drawerMenu.classList.toggle("open");
         overlay.classList.toggle("active");
+        hamburgerBtn.classList.toggle("open");
     };
 
     hamburgerBtn.addEventListener("click", toggleMenu);
@@ -53,29 +54,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // --- LÓGICA PARA MOSTRAR/OCULTAR EL BOTÓN CIRCULAR ---
+    // --- LÓGICA PARA MOSTRAR/OCULTAR EL BOTÓN CIRCULAR Y EL LOGO ---
+    // --- CONTROL DE APARICIÓN DE AMBAS BURBUJAS FLOTANTES ---
     const heroSection = document.getElementById("inicio");
-    const floatingBtn = document.getElementById("btn-flotante-circular");
+    const agendaBtn = document.getElementById("btn-flotante-circular");
+    const whatsappBtn = document.getElementById("btn-flotante-whatsapp");
+    const headerLogo = document.querySelector(".header .logo");
+    const headerElement = document.querySelector(".header");
 
-    if (heroSection && floatingBtn) {
-        // Creamos al "vigilante"
+    if (heroSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // isIntersecting es true si la sección 'inicio' se ve en pantalla
                 if (!entry.isIntersecting) {
-                    // Si ya NO se ve el hero, agregamos la clase para mostrar el botón
-                    floatingBtn.classList.add("show-btn");
+                    if (agendaBtn) agendaBtn.classList.add("show-btn");
+                    if (whatsappBtn) whatsappBtn.classList.add("show-btn");
+                    if (headerLogo) headerLogo.classList.add("show-logo");
+                    if (headerElement) headerElement.classList.add("header-scrolled");
                 } else {
-                    // Si el hero sí se ve, quitamos la clase para ocultar el botón
-                    floatingBtn.classList.remove("show-btn");
+                    if (agendaBtn) agendaBtn.classList.remove("show-btn");
+                    if (whatsappBtn) whatsappBtn.classList.remove("show-btn");
+                    if (headerLogo) headerLogo.classList.remove("show-logo");
+                    if (headerElement) headerElement.classList.remove("header-scrolled");
                 }
             });
         }, {
-            // threshold: 0.1 significa que reaccionará cuando quede menos del 10% del hero visible
-            threshold: 0.1
+            threshold: 0.15
         });
 
-        // Le decimos al vigilante que observe la sección del hero
         observer.observe(heroSection);
     }
 
@@ -109,6 +114,38 @@ document.addEventListener("DOMContentLoaded", () => {
             radius: 8,
             weight: 2
         }).addTo(map);
+    }
+
+    // --- MANEJO DINÁMICO DE PREGUNTAS FRECUENTES EN MODO ESCRITORIO ---
+    const faqItems = document.querySelectorAll(".faq-item");
+    const faqPanel = document.getElementById("faq-panel-content");
+
+    if (faqItems.length > 0 && faqPanel) {
+        faqItems.forEach((item, index) => {
+            if (index === 0) item.classList.add("active-item");
+
+            item.addEventListener("click", (e) => {
+                if (window.innerWidth >= 768) {
+                    e.preventDefault(); // Evita el colapso nativo en PC
+                    faqItems.forEach(i => {
+                        i.classList.remove("active-item");
+                        i.removeAttribute("open");
+                    });
+                    item.classList.add("active-item");
+                    item.setAttribute("open", "true");
+
+                    const answerText = item.querySelector(".faq-answer p").textContent;
+                    faqPanel.innerHTML = `<p>${answerText}</p>`;
+                }
+            });
+        });
+    }
+
+    // --- ACTUALIZACIÓN DE TAMAÑO DE MAPA LEAFLET ---
+    if (mapContainer && typeof map !== "undefined") {
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 400);
     }
 
 });

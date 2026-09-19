@@ -1,20 +1,15 @@
-/* Importación de tipografías elegantes de Google Fonts */
+/* ImportaciÃ³n de tipografÃ­as elegantes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
 /* Variables y Reset */
 :root {
-    /* Paleta Dorado Champagne */
-    --primary-color: #C29B62;    
-    --primary-hover: #D8B47D;    
-    
-    /* Tema Dusty Rose (Rosa de la fotografía) */
-    --bg-main: #E6D0D3;          /* Rosa empolvado base */
-    --bg-surface: #F2E8E9;       /* Rosa ultra claro para cajas translúcidas */
-    --text-main: #3A2E29;        /* Marrón un poco más oscuro para contraste */
-    --text-light: #FFFFFF;       
-    --text-muted: #8A7970;       
-    
-    /* Tipografías */
+    --primary-color: #C29B62;
+    --primary-hover: #D8B47D;
+    --bg-main: #E6D0D3;
+    --bg-surface: #F2E8E9;
+    --text-main: #4A3B32; /* Tono cafÃ© oscuro, elimina el negro agresivo */
+    --text-light: #FFFFFF;
+    --text-muted: #8A7970;
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
 }
@@ -27,15 +22,14 @@
 
 body {
     font-family: var(--font-body);
-    font-weight: 300; 
-    background-color: var(--bg-main);
-    
-    /* Patrón de flor/estrella de 4 pétalos (Líneas finas elegantes) */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='0.20' d='M30 0 Q 36 24, 60 30 Q 36 36, 30 60 Q 24 36, 0 30 Q 24 24, 30 0 Z' /%3E%3C/svg%3E");
-    background-size: 60px 60px;
-    
+    font-weight: 300;
+
+    /* Degradado Beige Arena (De claro a oscuro) */
+    background: linear-gradient(to bottom, #F9F6F0 0%, #DBCBB5 100%);
+    background-attachment: fixed; /* Mantiene el degradado fijo al hacer scroll */
+
     color: var(--text-main);
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 /* Header */
@@ -44,120 +38,280 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px;
+    height: 60px;
+    padding: 0 24px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     z-index: 100;
-
-    /* Efecto Glassmorphism
-    background: rgba(230, 208, 211, 0.35);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); */
-
-    border: none; /* Línea de luz inferior */
+    /* En el Hero: Dorado traslÃºcido ligero */
+    background: rgba(194, 155, 98, 0.18);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(194, 155, 98, 0.3);
+    transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, height 0.3s ease;
 }
 
+/* Clase inyectada por JS al salir del Hero: Dorado profundo, opaco y contrastante */
+.header.header-scrolled {
+    background: rgba(133, 101, 56, 0.88); /* Tono oro viejo/marrÃ³n dorado profundo */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 235, 205, 0.35);
+    box-shadow: 0 4px 20px rgba(58, 46, 41, 0.2);
+}
+
+
+
+
+
+
+/* 1. Mantenemos el estilo cursivo original para el Logo */
 .logo {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
     font-style: italic;
-    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
     letter-spacing: 1px;
-    /* Sombra sutil para separarlo del fondo */
-    text-shadow: 0px 2px 4px rgba(58, 46, 41, 0.15);
+
+    /* ConfiguraciÃ³n para ocultarlo al inicio */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-/* Botón Hamburguesa */
+/* El logo aparecerÃ¡ con esta clase (JavaScript) */
+.logo.show-logo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 2. Mantener la tipografÃ­a de los tÃ­tulos */
+h1, h2 {
+    font-family: var(--font-heading);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin-bottom: 35px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+
+    /* Degradado en Ã¡ngulo 135 grados para flujo natural */
+    background: linear-gradient(
+        135deg,
+        #C29B62 0%,
+        #D8B47D 25%,
+        #FFFFFF 50%,
+        #D8B47D 75%,
+        #C29B62 100%
+    );
+    background-size: 300% 300%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: brilloDiagonal 6s ease infinite; /* FunciÃ³n ease para movimiento mÃ¡s orgÃ¡nico */
+    filter: drop-shadow(0px 2px 4px rgba(74, 59, 50, 0.15));
+}
+
+@keyframes brilloDiagonal {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Reflejo/Destello sutil para tÃ­tulos h1 */
+h1 {
+    /* Degradado base de la marca con un "destello" claro en medio */
+    background: linear-gradient(
+        to right,
+        var(--primary-color) 0%,
+        #FFFFFF 50%,                /* Destello blanco */
+        var(--primary-color) 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* AnimaciÃ³n para que el destello se mueva */
+    animation: brilloTitulo 5s linear infinite;
+}
+
+/* AnimaciÃ³n del brillo */
+@keyframes brilloTitulo {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Ocultar el logo por defecto (cuando estamos hasta arriba en el Hero) */
+.logo {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Esta clase se la agregaremos con JavaScript al hacer scroll */
+.logo.show-logo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+
+
+
+
+
+
+/* BotÃ³n Hamburguesa */
 .hamburger-btn {
-    position: absolute; /* Ancla el menú a la izquierda sin empujar el logo */
-    left: 20px;
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; /* AlineaciÃ³n asimÃ©trica sofisticada */
     gap: 6px;
+    width: 36px;
+    height: 36px;
+    padding: 4px;
     z-index: 101;
+    transition: transform 0.2s ease;
 }
 
 .hamburger-btn .bar {
-    width: 30px;
-    height: 2px; 
-    background-color: #FFFFFF; /* Menú hamburguesa blanco */
-    transition: 0.3s;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Sombreado sutil para que resalte sobre fondos claros */
+    height: 1.5px; /* Barra ultra delgada */
+    background-color: #F9F6F0; /* Tono crema claro marfil */
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 4px rgba(74, 59, 50, 0.3);
 }
 
-/* Elimina el recuadro negro al hacer clic en móviles */
+/* Largos asimÃ©tricos estilo diseÃ±o editorial */
+.hamburger-btn .bar:nth-child(1) { width: 26px; }
+.hamburger-btn .bar:nth-child(2) { width: 18px; }
+.hamburger-btn .bar:nth-child(3) { width: 22px; }
+
+/* Transformación en X cuando está abierto */
+.hamburger-btn.open .bar {
+    background-color: #F9F6F0 !important; /* Blanco marfil forzado al estar abierto */
+    width: 26px; /* Misma longitud para la cruz */
+}
+.hamburger-btn.open .bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger-btn.open .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.open .bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* El hover sólo en desktop o si no está abierto */
+.hamburger-btn:not(.open):hover .bar {
+    background-color: var(--primary-color);
+    width: 26px; /* Se alinean suavemente al pasar el cursor */
+}
+
+/* Elimina el recuadro negro al hacer clic en mÃ³viles */
 .hamburger-btn:focus,
 .hamburger-btn:active {
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Drawer Menu */
+/* =========================================
+   DRAWER MENU LATERAL REESTRUCTURADO
+   ========================================= */
+
+/* 1. Anclaje exacto: Inicia debajo del Header y termina al ras del fondo */
 .drawer-menu {
     position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100dvh;
-    /* Efecto Glassmorphism */
-    background-color: rgba(242, 232, 233, 0.5); /* Blanco/rosa roto translúcido */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-right: none; /* Borde luminoso */
-    z-index: 99;
-    padding: 80px 30px;
-    transition: left 0.3s ease-in-out;
+    top: 60px; /* Coincide con la altura fija exacta del header */
+    height: calc(100dvh - 60px); /* Ocupa solo desde la base del header hacia abajo */
+    left: -320px;
+    width: 290px;
+
+    /* Mismo acabado que el header: dorado translúcido con blur */
+    background: rgba(194, 155, 98, 0.22);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-right: 1px solid rgba(194, 155, 98, 0.4);
+    border-top: none; /* No compite con el borde del header */
+
+    z-index: 99; /* Por debajo del header (z-index: 100), sin empalmes visuales */
+    padding: 35px 25px 30px 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 5px 0 25px rgba(74, 60, 53, 0.08);
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 30px rgba(58, 46, 41, 0.15);
+    box-sizing: border-box;
 }
 
 .drawer-menu.open {
     left: 0;
 }
 
-.menu-links {
-    list-style: none;
-}
-
-.menu-links li {
-    margin-bottom: 25px;
-}
-
-.nav-link {
-    font-family: var(--font-heading);
-    color: var(--text-light); /* Texto en blanco puro */
-    text-decoration: none;
-    font-size: 1.6rem;
-    font-weight: 400;
-    transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--primary-color);
-    padding-left: 8px;
-    font-style: italic;
-}
-
+/* El overlay también nace debajo del header para no oscurecerlo */
 .overlay {
     position: fixed;
-    top: 0;
+    top: 60px;
     left: 0;
     width: 100%;
-    height: 100dvh;
-    background: rgba(74, 60, 53, 0.5); /* Overlay marrón oscuro translúcido */
+    height: calc(100dvh - 60px);
+    background: rgba(42, 34, 30, 0.4);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     z-index: 98;
     display: none;
 }
-.overlay.active { display: block; }
 
-/* Contenedor Scroll Snap */
+.overlay.active {
+    display: block;
+}
+
+/* 2. Enlaces del Menú Lateral */
+.menu-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-links li {
+    margin-bottom: 20px;
+}
+
+.menu-links .nav-link {
+    font-family: var(--font-heading);
+    color: #F9F6F0; /* Tono blanco marfil limpio */
+    text-decoration: none;
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.menu-links .nav-link:hover {
+    color: var(--text-light);
+    font-style: italic;
+    padding-left: 8px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Contenedor con snap limpio */
 .scroll-container {
     height: 100dvh;
     overflow-y: scroll;
@@ -165,19 +319,22 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Secciones por pantalla */
+/* Las secciones ya NO tienen altura fija: respiran según su contenido */
 .screen-section {
-    height: 100dvh;
+    min-height: 100dvh;
+    height: auto !important; /* Permite crecer verticalmente si hay mucho contenido */
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centra verticalmente */
     align-items: center;
     position: relative;
-    /* 100px arriba para el header, 120px abajo para el botón flotante */
-    padding: 100px 20px 120px 20px; 
+    padding: 80px 20px 100px 20px; /* 80px arriba para librar perfectamente el header */
     text-align: center;
+    box-sizing: border-box;
 }
+
+
 
 /* Hero Section (Fondo de Imagen Responsive) */
 .hero-bg, .hero-bg-img {
@@ -187,12 +344,12 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Enfocamos el 80% hacia abajo para que las manos suban en el móvil */
-    object-position: center 85%; 
+    /* Enfocamos el 80% hacia abajo para que las manos suban en el mÃ³vil */
+    object-position: center 85%;
     z-index: -2;
 }
 
-/* Devolvemos el enfoque al centro solo para la versión de escritorio */
+/* Devolvemos el enfoque al centro solo para la versiÃ³n de escritorio */
 @media (min-width: 768px) {
     .content {
         margin-bottom: 0;
@@ -208,7 +365,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Un degradado que oscurece los bordes y deja el centro más claro */
+    /* Un degradado que oscurece los bordes y deja el centro mÃ¡s claro */
     background: linear-gradient(to bottom, rgba(74, 60, 53, 0.4) 0%, rgba(74, 60, 53, 0.1) 50%, rgba(74, 60, 53, 0.4) 100%);
     z-index: -1;
 }
@@ -217,22 +374,46 @@ body {
 .hero-section {
     padding: 20px;
     overflow: hidden;
-    position: relative; 
+    position: relative;
 }
 
-/* Sombreado para que el texto resalte sobre fondos claros */
-.hero-section .content h1 {
-    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.4);
-}
-
-.hero-section .content p {
-    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
-    font-weight: 400; /* Lo hacemos un poquito más grueso para leerlo mejor */
-}
-
-/* Solo en el Hero el texto es blanco por el video de fondo */
 .hero-section .content {
-    color: var(--text-light);
+    background: rgba(194, 155, 98, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 9999px; /* Curvatura completa tipo pÃ­ldora/cÃ¡psula */
+    padding: 20px 35px; /* Padding reducido */
+    z-index: 2;
+    position: relative;
+    max-width: 550px;
+    width: 90%;
+    margin-bottom: 8vh;
+    box-shadow: 0 10px 30px rgba(74, 60, 53, 0.1);
+}
+
+.hero-section .content h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #C29B62 0%, #FFFFFF 50%, #C29B62 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: brilloOro 4s linear infinite;
+    text-shadow: none;
+}
+
+/* 1. SubtÃ­tulo del Hero en Blanco Puro */
+.hero-subtitle {
+    color: #FFFFFF !important;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0;
 }
 
 .content {
@@ -240,38 +421,20 @@ body {
     position: relative;
     max-width: 600px;
     width: 100%;
-    /* Empuja todo el bloque hacia arriba en móviles para no tapar las uñas */
-    margin-bottom: 12vh; 
+    /* Empuja todo el bloque hacia arriba en mÃ³viles para no tapar las uÃ±as */
+    margin-bottom: 12vh;
 }
 
-h1, h2 {
-    font-family: var(--font-heading);
-}
 
-h1 { 
-    font-size: 3rem; 
-    margin-bottom: 15px; 
-    font-weight: 400;
-    line-height: 1.1;
-}
 
-h2 { 
-    font-size: 2.2rem; 
-    margin-bottom: 35px; /* Más aire debajo del título para separar del texto */
-    color: var(--primary-color); 
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.3;
-}
-
-p { 
-    font-size: 1.05rem; 
-    margin-bottom: 20px; 
-    line-height: 1.6; 
+p {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 /* Botones estilo Dorado/Elegante */
-.btn-primary, .btn-secondary {
+.btn-primary {
     font-family: var(--font-body);
     display: inline-block;
     padding: 14px 32px;
@@ -284,36 +447,25 @@ p {
     transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
 }
 
-.btn-primary { 
-    background-color: var(--primary-color); 
-    color: var(--text-light); 
-    /* Mayor separación entre la descripción y el botón */
-    margin-top: 100px; 
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    /* Mayor separaciÃ³n entre la descripciÃ³n y el botÃ³n */
+    margin-top: 100px;
     border: none;
-    box-shadow: 0 8px 20px rgba(194, 155, 98, 0.25); 
+    box-shadow: 0 8px 20px rgba(194, 155, 98, 0.25);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
-    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4); 
+    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4);
 }
 
-.btn-secondary { 
-    border: 1px solid var(--primary-color); 
-    color: var(--primary-color); 
-    background-color: transparent;
-    margin-top: 20px; 
+.btn-primary:active {
+    transform: scale(0.96);
 }
 
-.btn-secondary:hover {
-    background-color: rgba(194, 155, 98, 0.08);
-}
-
-.btn-primary:active, .btn-secondary:active { 
-    transform: scale(0.96); 
-}
-
-/* Listas y Grids (Diseño modular estilo caja de las imágenes) */
+/* Listas y Grids (DiseÃ±o modular estilo caja de las imÃ¡genes) */
 .services-list {
     list-style: none;
     text-align: left;
@@ -339,20 +491,20 @@ p {
     border-bottom: none;
 }
 
-/* Viñeta dorada para los servicios */
+/* ViÃ±eta dorada para los servicios */
 .services-list li::before {
-    content: "•";
+    content: "â€¢";
     color: var(--primary-color);
     font-size: 1.5rem;
     margin-right: 10px;
     line-height: 0;
 }
 
-/* Contenedor principal: relativo para que el botón se posicione dentro de este espacio */
+/* Contenedor principal: relativo para que el botÃ³n se posicione dentro de este espacio */
 .map-placeholder {
     position: relative;
     width: 100%;
-    height: 200px; /* Ajusta la altura según necesites */
+    height: 200px; /* Ajusta la altura segÃºn necesites */
     background-color: #e0e0e0; /* Tu mapa gris */
     border-radius: 12px; /* Opcional, para redondear las esquinas del contenedor */
     overflow: hidden;
@@ -361,42 +513,8 @@ p {
 
 
 
-/* Botón flotante estilo cristal rosa (Estilizado) */
-.btn-indicaciones {
-    position: absolute;
-    bottom: 16px; /* Lo bajamos un poco para alinearlo mejor con tu otro botón */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10; 
 
-    /* Diseño Glassmorphism (Cristal) */
-    background: rgba(255, 103, 179, 0.486); /* Un rosa un poco más suave y elegante */
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px); 
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    
-    /* Tipografía y forma ajustadas */
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: 14px; /* Letra un poco más pequeña */
-    padding: 8px 24px; /* Redujimos el alto (8px) y el ancho (24px) */
-    border-radius: 50px; 
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); /* Sombra más suave */
-
-    /* Animación */
-    animation: pulso-rosa 2s infinite;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-/* El efecto hover se mantiene igual */
-.btn-indicaciones:hover {
-    background: rgba(255, 105, 180, 0.9); 
-    transform: translateX(-50%) scale(1.05); 
-}
-
-/* Keyframes para la animación de atención */
+/* Keyframes para la animaciÃ³n de atenciÃ³n */
 @keyframes pulso-rosa {
     0% {
         box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.6);
@@ -420,37 +538,53 @@ p {
 .profile-pic {
     width: 200px;
     height: 200px;
-    border-radius: 50%; /* La hace un círculo perfecto */
+    border-radius: 50%; /* La hace un cÃ­rculo perfecto */
     object-fit: cover; /* Evita que la foto se deforme */
     border: 3px solid var(--primary-color); /* Anillo dorado */
-    padding: 5px; /* Crea un doble anillo visual con el fondo translúcido */
+    padding: 5px; /* Crea un doble anillo visual con el fondo translÃºcido */
     background: rgba(255, 255, 255, 0.4); /* Respaldo cristalino */
     box-shadow: 0 10px 30px rgba(194, 155, 98, 0.3); /* Resplandor dorado debajo */
 }
 
 .social-links {
-    margin-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .social-links a {
-    color: var(--primary-color);
-    margin: 0 12px;
+    display: inline-block;
+    background: linear-gradient(45deg, #C29B62 0%, #F5E3C0 50%, #C29B62 100%);
+    background-size: 200% auto;
+    color: #FFFFFF;
+    padding: 12px 30px;
+    border-radius: 40px;
     text-decoration: none;
     font-family: var(--font-heading);
     font-size: 1.2rem;
     font-style: italic;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(194, 155, 98, 0.3);
+    animation: brilloOro 3s linear infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(194, 155, 98, 0.5);
+    color: #FFFFFF;
+}
+
+@keyframes brilloOro {
+    to { background-position: 200% center; }
 }
 
 
 
-/* Animación Zoom In y Out para el Hero */
+/* AnimaciÃ³n Zoom In y Out para el Hero */
 .hero-bg-img {
-    /* La animación dura 20 segundos, es muy suave y se repite en bucle alternando dirección */
+    /* La animaciÃ³n dura 20 segundos, es muy suave y se repite en bucle alternando direcciÃ³n */
     animation: smoothZoom 20s ease-in-out infinite alternate;
     transform-origin: center;
 }
@@ -464,7 +598,7 @@ p {
 
 
 
-/* Animación de flotar hacia arriba y girar */
+/* AnimaciÃ³n de flotar hacia arriba y girar */
 @keyframes float {
     0% {
         transform: translateY(0) rotate(0deg) scale(0.5);
@@ -480,7 +614,7 @@ p {
 
 
 
-/* Aseguramos que el texto principal esté por encima de todo */
+/* Aseguramos que el texto principal estÃ© por encima de todo */
 .content {
     z-index: 2;
     position: relative;
@@ -488,7 +622,7 @@ p {
     width: 100%;
     margin-bottom: 0; /* Quitamos el margen para que el texto quede bien centrado */
 }
-/* Contenedor de Partículas */
+/* Contenedor de PartÃ­culas */
 #particles-container {
     position: absolute;
     top: 0;
@@ -500,14 +634,14 @@ p {
     pointer-events: none;
 }
 
-/* Partículas (Polvo Dorado) */
+/* PartÃ­culas (Polvo Dorado) */
 .particle {
     position: absolute;
     bottom: -20px;
     /* Usamos un color fijo dorado/nude en lugar de variable para asegurar que pinte */
-    background-color: #D8B47D; 
-    border-radius: 50%; /* Esto los convierte en círculos perfectos */
-    box-shadow: 0 0 10px rgba(194, 155, 98, 0.8), 0 0 20px rgba(194, 155, 98, 0.5); /* Brillo */
+    background-color: #fcfcfc;
+    border-radius: 50%; /* Esto los convierte en cÃ­rculos perfectos */
+    box-shadow: 0 0 10px rgba(248, 247, 245, 0.8), 0 0 20px rgba(194, 155, 98, 0.5); /* Brillo */
     animation: floatUp linear infinite;
 }
 
@@ -527,7 +661,7 @@ p {
 
 /* Custom Scrollbar para el contenedor principal */
 .scroll-container {
-    /* Para navegadores estándar (Firefox) */
+    /* Para navegadores estÃ¡ndar (Firefox) */
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--bg-surface);
 }
@@ -544,7 +678,7 @@ p {
 .scroll-container::-webkit-scrollbar-thumb {
     background-color: var(--primary-color); /* Color dorado */
     border-radius: 10px; /* Bordes redondeados */
-    border: 2px solid var(--bg-surface); /* Espacio interior para que se vea más fina */
+    border: 2px solid var(--bg-surface); /* Espacio interior para que se vea mÃ¡s fina */
 }
 
 .scroll-container::-webkit-scrollbar-thumb:hover {
@@ -553,7 +687,7 @@ p {
 
 
 /* =========================================
-   SISTEMA DE ANIMACIÓN: BORDER SNAKE
+   SISTEMA DE ANIMACIÃ“N: BORDER SNAKE
    ========================================= */
 .btn-animado {
     position: relative;
@@ -579,11 +713,11 @@ p {
     width: 300px;
     height: 300px;
     background: conic-gradient(
-        transparent 0%, 
-        rgba(253, 146, 221, 0.9) 25%, 
-        transparent 25%, 
-        transparent 50%, 
-        rgba(255, 255, 255, 0.9) 75%, 
+        transparent 0%,
+        rgba(253, 146, 221, 0.9) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.9) 75%,
         transparent 75%
     );
     transform: translate(-50%, -50%) rotate(0deg);
@@ -595,7 +729,7 @@ p {
 .btn-animado::after {
     content: '';
     position: absolute;
-    inset: 2px; 
+    inset: 2px;
     background-color: rgba(194, 155, 98, 0.4);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -608,38 +742,56 @@ p {
 }
 
 /* =========================================
-   DISEÑO ESPECÍFICO DE CADA BOTÓN
+   DISEÃ‘O ESPECÃFICO DE CADA BOTÃ“N
    ========================================= */
 
-/* 1. Botón del Hero (Forma de Píldora - Anclado al fondo) */
+/* 1. BotÃ³n del Hero (Forma de PÃ­ldora - Anclado al fondo) */
 .hero-btn {
     position: absolute;
-    bottom: 40px; /* Lo pega a la parte inferior de la primera foto */
+    bottom: 40px;
     left: 0;
     right: 0;
-    margin: 0 auto; /* Centrado horizontal perfecto */
+    margin: 0 auto;
     width: max-content;
-    
     display: inline-block;
     color: var(--text-light);
     font-family: var(--font-body);
-    padding: 14px 32px;
+    padding: 16px 36px;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-radius: 40px; 
+    border-radius: 40px;
 }
 .hero-btn::after {
     border-radius: 40px;
 }
 
+/* Escala masiva para el botÃ³n Hero en Escritorio/Tablet */
+@media (min-width: 768px) {
+    .hero-btn {
+        padding: 24px 60px;
+        font-size: 1.4rem;
+        bottom: 80px; /* Subimos un poco para que no pegue abajo */
+        letter-spacing: 3px;
+    }
+}
 
-/* 2. Botón Flotante Global (Circular) */
-#btn-flotante-circular {
+
+/* Texto de zonas de cobertura local */
+.seo-zones {
+    font-size: 0.85rem !important;
+    color: var(--text-muted);
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* =========================================
+   SISTEMA DE BURBUJAS FLOTANTES SIN INTERFERENCIA
+   ========================================= */
+.floating-action-btn {
     position: fixed;
-    bottom: 30px;
-    left: 20px; 
+    bottom: 25px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -647,120 +799,196 @@ p {
     align-items: center;
     justify-content: center;
     z-index: 90;
-    
-    /* Estado inicial: Oculto y un poco más abajo */
+    text-decoration: none;
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px) scale(0.9);
-    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    isolation: isolate;
 }
 
-#btn-flotante-circular::after {
-    border-radius: 50%; 
-}
-
-/* Clase que JavaScript le agregará para mostrarlo */
-#btn-flotante-circular.show-btn {
+.floating-action-btn.show-btn {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
 }
 
-
-.calendar-icon {
-    width: 26px;
-    height: 26px;
-    color: var(--text-light);
-    z-index: 1; /* El icono blanco sobre el cristal */
+.floating-icon {
+    width: 28px;
+    height: 28px;
+    color: #FFFFFF;
+    z-index: 2;
 }
 
-/* Motor de la rotación */
+/* 1. Burbuja Agenda (Izquierda - Cristal Dorado con Destello) */
+.btn-agenda-float {
+    left: 20px;
+    box-shadow: 0 8px 25px rgba(194, 155, 98, 0.4);
+}
+
+.btn-agenda-float::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    background: conic-gradient(
+        transparent 0%,
+        rgba(253, 146, 221, 0.85) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.85) 75%,
+        transparent 75%
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: borderSnake 2.8s linear infinite;
+    z-index: 0;
+}
+
+.btn-agenda-float::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-color: rgba(194, 155, 98, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* 2. Burbuja WhatsApp (Derecha - Verde Esmeralda Suave y Elegante) */
+.btn-whatsapp-float {
+    right: 20px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+}
+
+.btn-whatsapp-float::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 140px;
+    background: conic-gradient(
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 25%,
+        transparent 50%,
+        rgba(37, 211, 102, 0.8) 75%,
+        transparent 100%
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: borderSnake 3.5s linear infinite;
+    z-index: 0;
+}
+
+.btn-whatsapp-float::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-color: rgba(30, 160, 80, 0.45); /* Aumentada la transparencia (de 0.85 a 0.45) */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.btn-whatsapp-float:hover::after {
+    background-color: rgba(30, 160, 80, 0.75);
+}
+
+.floating-action-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+}
+
+.floating-action-btn:active {
+    transform: scale(0.95);
+}
+
+/* Motor de la rotaciÃ³n */
 @keyframes borderSnake {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 
-/* Cajas de contenido con efecto translúcido elegante */
+/* Cajas de contenido con efecto translÃºcido elegante */
 .services-list, .about-image-placeholder, .map-placeholder {
-    background: rgba(255, 255, 255, 0.4); /* Fondo más transparente */
+    background: rgba(255, 255, 255, 0.4); /* Fondo mÃ¡s transparente */
     backdrop-filter: blur(8px); /* Desenfoca el fondo rosado creando efecto cristal */
     border: 1px solid rgba(255, 255, 255, 0.6); /* Borde blanco delgado para definir la forma */
     box-shadow: 0 8px 32px rgba(58, 46, 41, 0.04); /* Sombra muy suave para dar profundidad */
 }
 
 
-/* Botón animado (Border Snake y Cristal) para el menú lateral */
-.drawer-menu .btn-primary {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    background: transparent; /* Quitamos el fondo sólido */
-    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4);
-    color: var(--text-light);
-    border: none;
+/* 3. Botón Sólido de Conversión en el Drawer */
+.drawer-footer {
+    width: 100%;
+    padding-top: 15px;
+}
+
+.btn-animado-solido {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
     text-align: center;
-}
-
-/* La luz giratoria del botón del menú */
-.drawer-menu .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    background: conic-gradient(
-        transparent 0%, 
-        rgba(255, 255, 255, 0.9) 25%, 
-        transparent 25%, 
-        transparent 50%, 
-        rgba(255, 255, 255, 0.9) 75%, 
-        transparent 75%
-    );
-    transform: translate(-50%, -50%) rotate(0deg);
-    animation: borderSnake 2.5s linear infinite;
-    z-index: -2;
-}
-
-/* El relleno de cristal esmerilado */
-.drawer-menu .btn-primary::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    background-color: rgba(194, 155, 98, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border-radius: 40px;
-    z-index: -1;
-    transition: background-color 0.3s;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    color: #4A3B32; /* Texto café oscuro sobre fondo dorado sólido */
+
+    /* Fondo dorado/blanco 100% sólido sin transparencias */
+    background: linear-gradient(135deg, #C29B62 0%, #FFF4E0 35%, #FFFFFF 50%, #FFF4E0 65%, #C29B62 100%);
+    background-size: 250% auto;
+    border: none;
+    box-shadow: 0 6px 20px rgba(194, 155, 98, 0.45);
+    animation: destelloSolido 3.5s linear infinite;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-sizing: border-box;
 }
 
-.drawer-menu .btn-primary:hover::after {
-    background-color: rgba(194, 155, 98, 0.65);
+.btn-animado-solido:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(194, 155, 98, 0.65);
+    color: #2A221E;
+}
+
+.btn-animado-solido:active {
+    transform: scale(0.97);
+}
+
+@keyframes destelloSolido {
+    to {
+        background-position: 250% center;
+    }
 }
 
 /* Ajustes del mapa Leaflet */
 .map-placeholder {
-    padding: 0; 
-    overflow: hidden; 
+    padding: 0;
+    overflow: hidden;
     position: relative;
     /* Mantenemos el efecto cristal en el borde */
 }
 
 
 
-/* Mapa convertido a blanco y gris estético */
+/* Mapa convertido a blanco y gris estÃ©tico */
 #map {
     width: 100%;
     height: 100%;
     z-index: 1;
-    /* 
+    /*
       1. grayscale(1): Elimina todos los colores.
       2. brightness(1.15): Aclara el fondo gris oscuro para volverlo casi blanco.
       3. contrast(0.85): Suaviza los textos para que se vean grises y no negros fuertes.
     */
-    filter: grayscale(1) brightness(1.15) contrast(0.85); 
+    filter: grayscale(1) brightness(1.15) contrast(0.85);
 }
 
 .map-link-overlay {
@@ -773,7 +1001,7 @@ p {
     cursor: pointer;
 }
 
-/* 2. El "papel celofán" rosa que lo tiñe perfectamente */
+/* 2. El "papel celofÃ¡n" rosa que lo tiÃ±e perfectamente */
 .map-placeholder::after {
     content: '';
     position: absolute;
@@ -782,18 +1010,18 @@ p {
     width: 100%;
     height: 100%;
     background-color: var(--bg-main);
-    mix-blend-mode: multiply; 
-    z-index: 2; 
-    pointer-events: none; 
-    
-    /* Controla qué tan fuerte es el filtro rosa. Prueba valores entre 0.3 y 0.8 */
-    opacity: 0.3; 
+    mix-blend-mode: multiply;
+    z-index: 2;
+    pointer-events: none;
+
+    /* Controla quÃ© tan fuerte es el filtro rosa. Prueba valores entre 0.3 y 0.8 */
+    opacity: 0.3;
 }
 
 
 
 /* =========================================
-   NUEVO CATÁLOGO DE SERVICIOS (SEO)
+   NUEVO CATÃLOGO DE SERVICIOS (SEO)
    ========================================= */
 .services-catalog {
     display: grid;
@@ -828,13 +1056,13 @@ p {
 .service-category h3 {
     font-family: var(--font-heading);
     color: var(--primary-color);
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 8px;
     font-weight: 600;
 }
 
 .service-category p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-main);
     margin-bottom: 0;
     line-height: 1.4;
@@ -842,7 +1070,7 @@ p {
 
 
 /* =========================================
-   SECCIÓN PREGUNTAS FRECUENTES (FAQ)
+   SECCIÃ“N PREGUNTAS FRECUENTES (FAQ)
    ========================================= */
 .faq-container {
     text-align: left;
@@ -851,15 +1079,20 @@ p {
     margin: 0 auto;
 }
 
+/* --- FAQ ESTILO ACORDEÃ“N ELEGANTE --- */
 .faq-item {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 12px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(58, 46, 41, 0.05);
+    background: transparent; /* Quitamos el fondo sÃ³lido */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none; /* Quitamos el recuadro completo */
+    border-bottom: 1px solid rgba(194, 155, 98, 0.3); /* Solo lÃ­nea fina abajo dorada */
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
 }
 
 .faq-item summary {
@@ -879,7 +1112,7 @@ p {
     display: none;
 }
 
-/* Símbolo + personalizado */
+/* SÃ­mbolo + personalizado */
 .faq-item summary::after {
     content: '+';
     position: absolute;
@@ -892,9 +1125,9 @@ p {
     transition: transform 0.3s ease;
 }
 
-/* Símbolo - cuando está abierto */
+/* SÃ­mbolo - cuando estÃ¡ abierto */
 .faq-item[open] summary::after {
-    content: '−';
+    content: 'âˆ’';
     transform: translateY(-50%) rotate(180deg);
 }
 
@@ -908,7 +1141,7 @@ p {
 
 
 /* =========================================
-   SECCIÓN DE RESEÑAS (CARRUSEL HORIZONTAL)
+   SECCIÃ“N DE RESEÃ‘AS (CARRUSEL HORIZONTAL)
    ========================================= */
 .reviews-container {
     display: flex;
@@ -917,9 +1150,9 @@ p {
     gap: 15px;
     padding-bottom: 15px;
     margin-bottom: 20px;
-    
-    /* Ocultar barra de scroll en navegadores estándar */
-    scrollbar-width: none; 
+
+    /* Ocultar barra de scroll en navegadores estÃ¡ndar */
+    scrollbar-width: none;
 }
 
 /* Ocultar barra de scroll en WebKit (Chrome, Safari, iOS) */
@@ -929,7 +1162,7 @@ p {
 
 .review-card {
     /* Ocupa el 85% del ancho de la pantalla para que asome la siguiente tarjeta */
-    flex: 0 0 85%; 
+    flex: 0 0 85%;
     scroll-snap-align: center;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(8px);
@@ -961,3 +1194,573 @@ p {
     font-size: 1rem;
     font-weight: 600;
 }
+
+/* --- COMPORTAMIENTO POR DEFECTO: MÃ“VILES Y TABLETAS EN VERTICAL --- */
+/* Forzamos que hasta 1024px (o cualquier pantalla en portrait) mantenga el menÃº hamburguesa */
+.desktop-nav {
+    display: none !important;
+}
+
+.hamburger-btn {
+    display: flex !important;
+    position: static; /* Se alinea naturalmente a la derecha con justify-content: space-between */
+}
+
+/* Si la pantalla estÃ¡ en vertical (incluso en tabletas de alta resoluciÃ³n como Tab S9 FE) */
+@media (orientation: portrait) {
+    .desktop-nav {
+        display: none !important;
+    }
+    .hamburger-btn {
+        display: flex !important;
+    }
+}
+
+/* --- MODO ESCRITORIO REAL / TABLETA EN HORIZONTAL (LANDSCAPE) --- */
+/* Solo se activa si la pantalla mide 1025px o mÃ¡s Y estÃ¡ acostada (landscape) */
+@media (min-width: 900px) and (orientation: landscape), (min-width: 1025px) {
+    .header {
+        height: 70px;
+        padding: 0 40px;
+    }
+
+    .header .logo {
+        font-size: 1.5rem;
+    }
+
+    .hamburger-btn {
+        display: none !important; /* Desaparecen las 3 rayitas */
+    }
+
+    .desktop-nav {
+        display: block !important; /* Aparece la navegaciÃ³n horizontal */
+    }
+
+    .desktop-menu-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-link-desktop {
+        font-family: var(--font-body);
+        color: #F9F6F0;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link-desktop:hover {
+        background: linear-gradient(135deg, #C29B62 0%, #FFFFFF 50%, #C29B62 100%);
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: brilloOro 2s linear infinite;
+    }
+}
+
+/* Botones Secundarios y "CÃ³mo llegar" (Reflejo Sutil) */
+.btn-secondary, .btn-indicaciones {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    padding: 14px 32px;
+    font-family: var(--font-heading) !important;
+    font-style: italic !important;
+    font-size: 1.15rem !important;
+    font-weight: 400 !important;
+    text-transform: none !important; /* Elimina mayÃºsculas planas */
+    letter-spacing: 0.5px !important;
+    border-radius: 40px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 15px rgba(194, 155, 98, 0.15);
+    margin-top: 20px;
+}
+
+.btn-secondary:active, .btn-indicaciones:active {
+    transform: scale(0.96);
+}
+
+/* Reflejo giratorio suave (menos protagonismo) */
+.btn-secondary::before, .btn-indicaciones::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: conic-gradient(
+        transparent 0%,
+        rgba(194, 155, 98, 0.5) 25%, /* Tono dorado suave en lugar de rosa */
+        transparent 50%,
+        rgba(255, 255, 255, 0.7) 75%,
+        transparent 100%
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: borderSnake 4.5s linear infinite; /* AnimaciÃ³n mÃ¡s lenta */
+    z-index: -2;
+}
+
+/* Capa de cristal para que el texto sea legible */
+.btn-secondary::after, .btn-indicaciones::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 40px;
+    z-index: -1;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover::after, .btn-indicaciones:hover::after {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Ajuste especÃ­fico de posiciÃ³n para el botÃ³n del mapa */
+.btn-indicaciones {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.btn-indicaciones:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Estilo para el tÃ­tulo en la barra de navegaciÃ³n */
+.header .logo {
+    background: linear-gradient(
+        to right,
+        #C29B62 0%,
+        #FFFFFF 50%,
+        #C29B62 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    animation: brilloOro 4s linear infinite;
+    font-size: 1.3rem;
+    white-space: nowrap; /* Evita que el nombre del salÃ³n se parta en 2 lÃ­neas */
+}
+/* 2. SecciÃ³n UbicaciÃ³n: Mapa a la izquierda y Datos a la derecha */
+.location-section .content {
+    max-width: 1100px;
+    width: 90%;
+}
+
+.location-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.location-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 15px rgba(58, 46, 41, 0.05);
+}
+
+.info-card h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.info-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* 3. Nueva SecciÃ³n Conecta con Nosotros */
+.connect-section .content {
+    max-width: 900px;
+    width: 90%;
+}
+
+.connect-description {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    max-width: 650px;
+    margin: 0 auto 35px auto;
+    line-height: 1.6;
+}
+
+.connect-channels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.channel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-heading) !important;
+    font-style: italic !important;
+    font-size: 1.15rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.5px !important;
+    color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(194, 155, 98, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #C29B62 0%, #D8B47D 50%, #C29B62 100%);
+    background-size: 200% auto;
+    animation: brilloOro 4s linear infinite;
+}
+
+.channel-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.45);
+}
+
+.channel-btn:active {
+    transform: scale(0.97);
+}
+
+.channel-icon {
+    font-size: 1.3rem;
+}
+
+/* --- DISTRIBUCIÃ“N EXPANDIDA PARA ESCRITORIO Y TABLETA --- */
+@media (min-width: 768px) {
+    .content {
+        max-width: 1100px;
+        width: 90%;
+    }
+
+    /* Expande el texto de introducciÃ³n y la imagen en "Conoce a tu especialista" */
+    .about-grid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        text-align: left;
+    }
+
+    .about-text {
+        flex: 1;
+        font-size: 1.1rem;
+    }
+
+    .about-image-wrapper {
+        margin-top: 0;
+        flex: 0 0 350px; /* Imagen mÃ¡s grande en PC */
+    }
+
+    .profile-pic {
+        width: 350px;
+        height: 350px;
+    }
+
+    /* CatÃ¡logo en 4 columnas si el espacio lo permite, o 2 muy amplias */
+    .services-catalog {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    /* Caja pÃ­ldora en PC con padding ajustado */
+    .hero-section .content {
+        max-width: 700px;
+        padding: 24px 50px;
+    }
+
+    /* --- FAQ MODO ESCRITORIO (Panel Dividido) --- */
+    .faq-container {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 35px;
+        max-width: 1000px;
+        align-items: stretch;
+    }
+
+    /* Ocultar el texto plegable dentro de la lista en PC */
+    .faq-list .faq-item .faq-answer {
+        display: none;
+    }
+
+    .faq-list .faq-item {
+        cursor: pointer;
+        transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .faq-list .faq-item.active-item {
+        background: rgba(255, 255, 255, 0.6);
+        border-color: var(--primary-color);
+    }
+
+    .faq-desktop-panel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(194, 155, 98, 0.4);
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 6px 20px rgba(58, 46, 41, 0.05);
+    }
+
+    .faq-panel-content p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--text-main);
+        font-style: italic;
+    }
+
+    /* 4. DistribuciÃ³n en Pantallas Grandes (Escritorio / Tablet) */
+    .location-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr; /* Mapa izquierda, contenido derecha */
+        align-items: center;
+        gap: 40px;
+    }
+
+    .map-placeholder {
+        height: 380px;
+        margin-top: 0;
+        border-radius: 16px;
+    }
+
+    .connect-channels {
+        grid-template-columns: repeat(4, 1fr); /* 4 botones alineados horizontalmente */
+    }
+}
+
+/* Ocultar panel derecho de FAQ en mÃ³viles */
+@media (max-width: 767px) {
+    .faq-desktop-panel {
+        display: none;
+    }
+}
+/* Iconos SVG del catálogo */
+.service-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--primary-color);
+    margin-right: 8px;
+    vertical-align: text-bottom;
+    display: inline-block;
+}
+
+/* Iconos SVG de la sección Conecta */
+.channel-svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+
+
+/* --- DESGLOSE DE SERVICIOS PARA SEO --- */
+.service-items {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    color: var(--text-main);
+    margin-top: 8px;
+}
+
+/* =========================================
+   SECCI�N DE FAQ FINAL CON DESPLAZAMIENTO NATURAL
+   ========================================= */
+.faq-section-expandable {
+    height: auto !important; /* Desbloquea la altura fija */
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    padding: 100px 20px 140px 20px !important; /* Espacio para respirar y librar el header/botones */
+    display: block !important; /* Flujo de bloque natural */
+}
+
+.faq-full-content {
+    max-width: 900px !important;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-full-content h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faq-accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-accordion-container .faq-item {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(194, 155, 98, 0.35);
+    border-radius: 12px;
+    padding: 16px 20px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-accordion-container .faq-item[open] {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: var(--primary-color);
+}
+
+.faq-accordion-container summary {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 30px;
+}
+
+.faq-accordion-container summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-accordion-container summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    transition: transform 0.2s ease;
+}
+
+.faq-accordion-container .faq-item[open] summary::after {
+    content: '-';
+}
+
+.faq-accordion-container p {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+
+
+/* Ubicación centrada */
+.location-single-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Horarios estilizados */
+.schedule-card-wrapper {
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.schedule-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 30px 25px;
+}
+
+.schedule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.05rem;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(194, 155, 98, 0.25);
+    color: var(--text-main);
+}
+
+.schedule-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.schedule-row.closed .hours {
+    color: #A3485E; /* Toque borgoña suave para "Cerrado" */
+    font-style: italic;
+}
+
+.schedule-note {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+
+/* Nuevos Estilos para los Botones de Contacto */
+.whatsapp-btn {
+    background: #25D366;
+    color: white !important;
+}
+.instagram-btn {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white !important;
+}
+.facebook-btn {
+    background: #1877F2;
+    color: white !important;
+}
+.agenda-btn {
+    background: linear-gradient(135deg, #C29B62, #D8B47D);
+    color: white !important;
+}
+
+.whatsapp-btn:hover { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+.instagram-btn:hover { box-shadow: 0 8px 25px rgba(220, 39, 67, 0.4); }
+.facebook-btn:hover { box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4); }
+.agenda-btn:hover { box-shadow: 0 8px 25px rgba(194, 155, 98, 0.4); }
