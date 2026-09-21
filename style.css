@@ -1742,28 +1742,6 @@ p {
 }
 
 
-/* Nuevos Estilos para los Botones de Contacto */
-.whatsapp-btn {
-    background: #25D366;
-    color: white !important;
-}
-.instagram-btn {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    color: white !important;
-}
-.facebook-btn {
-    background: #1877F2;
-    color: white !important;
-}
-.agenda-btn {
-    background: linear-gradient(135deg, #C29B62, #D8B47D);
-    color: white !important;
-}
-
-.whatsapp-btn:hover { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
-.instagram-btn:hover { box-shadow: 0 8px 25px rgba(220, 39, 67, 0.4); }
-.facebook-btn:hover { box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4); }
-.agenda-btn:hover { box-shadow: 0 8px 25px rgba(194, 155, 98, 0.4); }
 
 
 /* =========================================
@@ -1823,7 +1801,7 @@ p {
 }
 
 .carousel-track img {
-    height: 220px; /* Altura ajustada para que quepan dos filas cómodamente en celular */
+    height: 160px; /* <-- Cambia este valor (estaba en 220px) */
     width: auto;
     border-radius: 12px;
     object-fit: cover;
