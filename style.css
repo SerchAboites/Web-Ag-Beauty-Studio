@@ -1,4 +1,4 @@
-/* ImportaciÃ³n de tipografÃ­as elegantes de Google Fonts */
+﻿/* ImportaciÃ³n de tipografÃ­as elegantes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
 /* Variables y Reset */
@@ -1764,3 +1764,86 @@ p {
 .instagram-btn:hover { box-shadow: 0 8px 25px rgba(220, 39, 67, 0.4); }
 .facebook-btn:hover { box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4); }
 .agenda-btn:hover { box-shadow: 0 8px 25px rgba(194, 155, 98, 0.4); }
+
+
+/* =========================================
+   SECCIÓN GALERÍA (CARRUSEL INFINITO)
+   ========================================= */
+.gallery-section {
+    padding: 80px 0 100px 0 !important; /* Quitamos el padding lateral para que las fotos toquen el borde */
+}
+
+.gallery-content {
+    max-width: 100% !important;
+}
+
+.gallery-content h2 {
+    margin-bottom: 30px;
+    padding: 0 20px; /* Mantiene el título centrado y con márgenes */
+}
+
+/* Marco del carrusel con Glassmorphism */
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 25px 0;
+    box-shadow: 0 10px 30px rgba(58, 46, 41, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación vertical entre las dos filas de fotos */
+}
+
+/* Animación de desplazamiento (Track Superior) */
+.track-top {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scrollCarousel 60s linear infinite;
+}
+
+/* Animación de desplazamiento (Track Inferior - Desfasado) */
+.track-bottom {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    position: relative;
+    left: -120px; /* Desfase inicial para que no estén alineadas */
+    animation: scrollCarousel 65s linear infinite;
+}
+
+/* Pausar la animación cuando la clienta toca una foto */
+.track-top:hover, .track-bottom:hover {
+    animation-play-state: paused;
+}
+
+.carousel-track img {
+    height: 220px; /* Altura ajustada para que quepan dos filas cómodamente en celular */
+    width: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 6px 15px rgba(58, 46, 41, 0.15);
+    transition: transform 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.carousel-track img:hover {
+    transform: scale(1.03); 
+}
+
+@keyframes scrollCarousel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 10px)); } 
+}
+
+/* Ajustes para pantallas grandes (Escritorio) */
+@media (min-width: 768px) {
+    .carousel-track img {
+        height: 280px; /* Altura mayor en computadoras */
+    }
+}
