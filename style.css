@@ -7,7 +7,8 @@
     --primary-hover: #D8B47D;
     --bg-main: #E6D0D3;
     --bg-surface: #F2E8E9;
-    --text-main: #4A3B32; /* Tono cafÃ© oscuro, elimina el negro agresivo */
+    --text-main: #4A3B32;
+    /* Tono cafÃ© oscuro, elimina el negro agresivo */
     --text-light: #FFFFFF;
     --text-muted: #8A7970;
     --font-heading: 'Playfair Display', serif;
@@ -26,7 +27,8 @@ body {
 
     /* Degradado Beige Arena (De claro a oscuro) */
     background: linear-gradient(to bottom, #F9F6F0 0%, #DBCBB5 100%);
-    background-attachment: fixed; /* Mantiene el degradado fijo al hacer scroll */
+    background-attachment: fixed;
+    /* Mantiene el degradado fijo al hacer scroll */
 
     color: var(--text-main);
     overflow: hidden;
@@ -54,7 +56,8 @@ body {
 
 /* Clase inyectada por JS al salir del Hero: Dorado profundo, opaco y contrastante */
 .header.header-scrolled {
-    background: rgba(133, 101, 56, 0.88); /* Tono oro viejo/marrÃ³n dorado profundo */
+    background: rgba(133, 101, 56, 0.88);
+    /* Tono oro viejo/marrÃ³n dorado profundo */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 235, 205, 0.35);
@@ -67,18 +70,47 @@ body {
 
 
 /* 1. Mantenemos el estilo cursivo original para el Logo */
+/* 1. Mantenemos el estilo cursivo original para el Logo */
 .logo {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-
-    /* ConfiguraciÃ³n para ocultarlo al inicio */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 1 !important; 
+    visibility: visible !important;
 }
+
+/* 2. El SVG adaptado a la altura del texto */
+/* El contenedor padre dicta la altura exacta */
+.logo-wrapper {
+    /* Quitamos el alto fijo aquí, dejaremos que el SVG dicte el tamaño */
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+/* El SVG solo se limita a llenar el 100% de la altura permitida por su padre */
+.header-logo-svg {
+    
+    width: 90px;
+    aspect-ratio: 200 / 150; /* Esto calcula automáticamente un ancho de ~31.6px */
+    display: block;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(74, 59, 50, 0.25));
+    background-color: none;
+}
+
+.header-icon {
+    height: 60px;
+    /* Ajustable al tamaño deseado del header que mide 60px/70px */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Esta clase se la agregaremos con JavaScript al hacer scroll */
+.logo.show-logo {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 /* El logo aparecerÃ¡ con esta clase (JavaScript) */
 .logo.show-logo {
@@ -87,7 +119,8 @@ body {
 }
 
 /* 2. Mantener la tipografÃ­a de los tÃ­tulos */
-h1, h2 {
+h1,
+h2 {
     font-family: var(--font-heading);
 }
 
@@ -104,39 +137,43 @@ h2 {
     font-weight: 400;
     font-style: italic;
     line-height: 1.3;
-
-    /* Degradado en Ã¡ngulo 135 grados para flujo natural */
-    background: linear-gradient(
-        135deg,
-        #C29B62 0%,
-        #D8B47D 25%,
-        #FFFFFF 50%,
-        #D8B47D 75%,
-        #C29B62 100%
-    );
+    /* Degradado actualizado: transición de café a rosa */
+    background: linear-gradient(135deg,
+            #A67C41 0%,
+            #D4AF6A 25%,
+            #e28593 50%, /* <-- Aquí cambiamos el destello central a rosa */
+            #eb1982 75%,
+            #A67C41 100%);
     background-size: 300% 300%;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: brilloDiagonal 6s ease infinite; /* FunciÃ³n ease para movimiento mÃ¡s orgÃ¡nico */
-    filter: drop-shadow(0px 2px 4px rgba(74, 59, 50, 0.15));
+    animation: brilloDiagonal 6s ease infinite;
+    filter: drop-shadow(2px 3px 4px rgba(74, 59, 50, 0.5));
 }
 
 @keyframes brilloDiagonal {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Reflejo/Destello sutil para tÃ­tulos h1 */
 h1 {
     /* Degradado base de la marca con un "destello" claro en medio */
-    background: linear-gradient(
-        to right,
-        var(--primary-color) 0%,
-        #FFFFFF 50%,                /* Destello blanco */
-        var(--primary-color) 100%
-    );
+    background: linear-gradient(to right,
+            var(--primary-color) 0%,
+            #FFFFFF 50%,
+            /* Destello blanco */
+            var(--primary-color) 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
@@ -152,18 +189,6 @@ h1 {
     }
 }
 
-/* Ocultar el logo por defecto (cuando estamos hasta arriba en el Hero) */
-.logo {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-/* Esta clase se la agregaremos con JavaScript al hacer scroll */
-.logo.show-logo {
-    opacity: 1;
-    visibility: visible;
-}
 
 
 
@@ -181,7 +206,8 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end; /* AlineaciÃ³n asimÃ©trica sofisticada */
+    align-items: flex-end;
+    /* AlineaciÃ³n asimÃ©trica sofisticada */
     gap: 6px;
     width: 36px;
     height: 36px;
@@ -191,29 +217,44 @@ h1 {
 }
 
 .hamburger-btn .bar {
-    height: 1.5px; /* Barra ultra delgada */
-    background-color: #F9F6F0; /* Tono crema claro marfil */
+    height: 1.5px;
+    /* Barra ultra delgada */
+    background-color: #F9F6F0;
+    /* Tono crema claro marfil */
     border-radius: 4px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 1px 4px rgba(74, 59, 50, 0.3);
 }
 
 /* Largos asimÃ©tricos estilo diseÃ±o editorial */
-.hamburger-btn .bar:nth-child(1) { width: 26px; }
-.hamburger-btn .bar:nth-child(2) { width: 18px; }
-.hamburger-btn .bar:nth-child(3) { width: 22px; }
+.hamburger-btn .bar:nth-child(1) {
+    width: 26px;
+}
+
+.hamburger-btn .bar:nth-child(2) {
+    width: 18px;
+}
+
+.hamburger-btn .bar:nth-child(3) {
+    width: 22px;
+}
 
 /* Transformación en X cuando está abierto */
 .hamburger-btn.open .bar {
-    background-color: #F9F6F0 !important; /* Blanco marfil forzado al estar abierto */
-    width: 26px; /* Misma longitud para la cruz */
+    background-color: #F9F6F0 !important;
+    /* Blanco marfil forzado al estar abierto */
+    width: 26px;
+    /* Misma longitud para la cruz */
 }
+
 .hamburger-btn.open .bar:nth-child(1) {
     transform: translateY(7.5px) rotate(45deg);
 }
+
 .hamburger-btn.open .bar:nth-child(2) {
     opacity: 0;
 }
+
 .hamburger-btn.open .bar:nth-child(3) {
     transform: translateY(-7.5px) rotate(-45deg);
 }
@@ -221,7 +262,8 @@ h1 {
 /* El hover sólo en desktop o si no está abierto */
 .hamburger-btn:not(.open):hover .bar {
     background-color: var(--primary-color);
-    width: 26px; /* Se alinean suavemente al pasar el cursor */
+    width: 26px;
+    /* Se alinean suavemente al pasar el cursor */
 }
 
 /* Elimina el recuadro negro al hacer clic en mÃ³viles */
@@ -238,8 +280,10 @@ h1 {
 /* 1. Anclaje exacto: Inicia debajo del Header y termina al ras del fondo */
 .drawer-menu {
     position: fixed;
-    top: 60px; /* Coincide con la altura fija exacta del header */
-    height: calc(100dvh - 60px); /* Ocupa solo desde la base del header hacia abajo */
+    top: 60px;
+    /* Coincide con la altura fija exacta del header */
+    height: calc(100dvh - 60px);
+    /* Ocupa solo desde la base del header hacia abajo */
     left: -320px;
     width: 290px;
 
@@ -248,9 +292,11 @@ h1 {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-right: 1px solid rgba(194, 155, 98, 0.4);
-    border-top: none; /* No compite con el borde del header */
+    border-top: none;
+    /* No compite con el borde del header */
 
-    z-index: 99; /* Por debajo del header (z-index: 100), sin empalmes visuales */
+    z-index: 99;
+    /* Por debajo del header (z-index: 100), sin empalmes visuales */
     padding: 35px 25px 30px 25px;
     display: flex;
     flex-direction: column;
@@ -295,7 +341,8 @@ h1 {
 
 .menu-links .nav-link {
     font-family: var(--font-heading);
-    color: #F9F6F0; /* Tono blanco marfil limpio */
+    color: #F9F6F0;
+    /* Tono blanco marfil limpio */
     text-decoration: none;
     font-size: 1.35rem;
     font-weight: 400;
@@ -322,14 +369,17 @@ h1 {
 /* Las secciones ya NO tienen altura fija: respiran según su contenido */
 .screen-section {
     min-height: 100dvh;
-    height: auto !important; /* Permite crecer verticalmente si hay mucho contenido */
+    height: auto !important;
+    /* Permite crecer verticalmente si hay mucho contenido */
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
+    justify-content: center;
+    /* Centra verticalmente */
     align-items: center;
     position: relative;
-    padding: 80px 20px 100px 20px; /* 80px arriba para librar perfectamente el header */
+    padding: 80px 20px 100px 20px;
+    /* 80px arriba para librar perfectamente el header */
     text-align: center;
     box-sizing: border-box;
 }
@@ -337,7 +387,8 @@ h1 {
 
 
 /* Hero Section (Fondo de Imagen Responsive) */
-.hero-bg, .hero-bg-img {
+.hero-bg,
+.hero-bg-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -354,6 +405,7 @@ h1 {
     .content {
         margin-bottom: 0;
     }
+
     .btn-primary {
         margin-top: 20px;
     }
@@ -382,8 +434,10 @@ h1 {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 9999px; /* Curvatura completa tipo pÃ­ldora/cÃ¡psula */
-    padding: 20px 35px; /* Padding reducido */
+    border-radius: 9999px;
+    /* Curvatura completa tipo pÃ­ldora/cÃ¡psula */
+    padding: 20px 35px;
+    /* Padding reducido */
     z-index: 2;
     position: relative;
     max-width: 550px;
@@ -443,7 +497,8 @@ p {
     font-weight: 500;
     font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 2px; /* Espaciado de letras elegante */
+    letter-spacing: 2px;
+    /* Espaciado de letras elegante */
     transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -504,9 +559,12 @@ p {
 .map-placeholder {
     position: relative;
     width: 100%;
-    height: 200px; /* Ajusta la altura segÃºn necesites */
-    background-color: #e0e0e0; /* Tu mapa gris */
-    border-radius: 12px; /* Opcional, para redondear las esquinas del contenedor */
+    height: 200px;
+    /* Ajusta la altura segÃºn necesites */
+    background-color: #e0e0e0;
+    /* Tu mapa gris */
+    border-radius: 12px;
+    /* Opcional, para redondear las esquinas del contenedor */
     overflow: hidden;
     margin-top: 20px;
 }
@@ -519,9 +577,11 @@ p {
     0% {
         box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.6);
     }
+
     70% {
         box-shadow: 0 0 0 15px rgba(255, 20, 147, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(255, 20, 147, 0);
     }
@@ -538,12 +598,18 @@ p {
 .profile-pic {
     width: 200px;
     height: 200px;
-    border-radius: 50%; /* La hace un cÃ­rculo perfecto */
-    object-fit: cover; /* Evita que la foto se deforme */
-    border: 3px solid var(--primary-color); /* Anillo dorado */
-    padding: 5px; /* Crea un doble anillo visual con el fondo translÃºcido */
-    background: rgba(255, 255, 255, 0.4); /* Respaldo cristalino */
-    box-shadow: 0 10px 30px rgba(194, 155, 98, 0.3); /* Resplandor dorado debajo */
+    border-radius: 50%;
+    /* La hace un cÃ­rculo perfecto */
+    object-fit: cover;
+    /* Evita que la foto se deforme */
+    border: 3px solid var(--primary-color);
+    /* Anillo dorado */
+    padding: 5px;
+    /* Crea un doble anillo visual con el fondo translÃºcido */
+    background: rgba(255, 255, 255, 0.4);
+    /* Respaldo cristalino */
+    box-shadow: 0 10px 30px rgba(194, 155, 98, 0.3);
+    /* Resplandor dorado debajo */
 }
 
 .social-links {
@@ -577,7 +643,9 @@ p {
 }
 
 @keyframes brilloOro {
-    to { background-position: 200% center; }
+    to {
+        background-position: 200% center;
+    }
 }
 
 
@@ -590,8 +658,15 @@ p {
 }
 
 @keyframes smoothZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.15); } /* Hace un zoom del 15% */
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
+
+    /* Hace un zoom del 15% */
 }
 
 
@@ -604,8 +679,17 @@ p {
         transform: translateY(0) rotate(0deg) scale(0.5);
         opacity: 0;
     }
-    10% { opacity: 0.5; } /* Aparece suavemente */
-    80% { opacity: 0.4; } /* Se empieza a desvanecer */
+
+    10% {
+        opacity: 0.5;
+    }
+
+    /* Aparece suavemente */
+    80% {
+        opacity: 0.4;
+    }
+
+    /* Se empieza a desvanecer */
     100% {
         transform: translateY(-110vh) rotate(360deg) scale(1.2);
         opacity: 0;
@@ -620,8 +704,10 @@ p {
     position: relative;
     max-width: 600px;
     width: 100%;
-    margin-bottom: 0; /* Quitamos el margen para que el texto quede bien centrado */
+    margin-bottom: 0;
+    /* Quitamos el margen para que el texto quede bien centrado */
 }
+
 /* Contenedor de PartÃ­culas */
 #particles-container {
     position: absolute;
@@ -630,7 +716,8 @@ p {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 1; /* Por encima del overlay oscuro */
+    z-index: 1;
+    /* Por encima del overlay oscuro */
     pointer-events: none;
 }
 
@@ -640,8 +727,10 @@ p {
     bottom: -20px;
     /* Usamos un color fijo dorado/nude en lugar de variable para asegurar que pinte */
     background-color: #fcfcfc;
-    border-radius: 50%; /* Esto los convierte en cÃ­rculos perfectos */
-    box-shadow: 0 0 10px rgba(248, 247, 245, 0.8), 0 0 20px rgba(194, 155, 98, 0.5); /* Brillo */
+    border-radius: 50%;
+    /* Esto los convierte en cÃ­rculos perfectos */
+    box-shadow: 0 0 10px rgba(248, 247, 245, 0.8), 0 0 20px rgba(194, 155, 98, 0.5);
+    /* Brillo */
     animation: floatUp linear infinite;
 }
 
@@ -650,8 +739,15 @@ p {
         transform: translateY(0) scale(0.5);
         opacity: 0;
     }
-    10% { opacity: 0.8; }
-    80% { opacity: 0.5; }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
     100% {
         transform: translateY(-110vh) scale(1.2);
         opacity: 0;
@@ -668,17 +764,22 @@ p {
 
 /* Para navegadores Webkit (Chrome, Safari, Edge) */
 .scroll-container::-webkit-scrollbar {
-    width: 8px; /* Barra delgada */
+    width: 8px;
+    /* Barra delgada */
 }
 
 .scroll-container::-webkit-scrollbar-track {
-    background: var(--bg-surface); /* Fondo rosado claro */
+    background: var(--bg-surface);
+    /* Fondo rosado claro */
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-    background-color: var(--primary-color); /* Color dorado */
-    border-radius: 10px; /* Bordes redondeados */
-    border: 2px solid var(--bg-surface); /* Espacio interior para que se vea mÃ¡s fina */
+    background-color: var(--primary-color);
+    /* Color dorado */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    border: 2px solid var(--bg-surface);
+    /* Espacio interior para que se vea mÃ¡s fina */
 }
 
 .scroll-container::-webkit-scrollbar-thumb:hover {
@@ -697,7 +798,8 @@ p {
     box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4);
     transition: transform 0.2s;
     text-decoration: none;
-    z-index: 2; /* Para que quede sobre el fondo del Hero */
+    z-index: 2;
+    /* Para que quede sobre el fondo del Hero */
 }
 
 .btn-animado:active {
@@ -712,14 +814,12 @@ p {
     left: 50%;
     width: 300px;
     height: 300px;
-    background: conic-gradient(
-        transparent 0%,
-        rgba(253, 146, 221, 0.9) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.9) 75%,
-        transparent 75%
-    );
+    background: conic-gradient(transparent 0%,
+            rgba(253, 146, 221, 0.9) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.9) 75%,
+            transparent 75%);
     transform: translate(-50%, -50%) rotate(0deg);
     animation: borderSnake 2.5s linear infinite;
     z-index: -2;
@@ -763,6 +863,7 @@ p {
     letter-spacing: 2px;
     border-radius: 40px;
 }
+
 .hero-btn::after {
     border-radius: 40px;
 }
@@ -772,7 +873,8 @@ p {
     .hero-btn {
         padding: 24px 60px;
         font-size: 1.4rem;
-        bottom: 80px; /* Subimos un poco para que no pegue abajo */
+        bottom: 80px;
+        /* Subimos un poco para que no pegue abajo */
         letter-spacing: 3px;
     }
 }
@@ -834,14 +936,12 @@ p {
     left: 50%;
     width: 140px;
     height: 140px;
-    background: conic-gradient(
-        transparent 0%,
-        rgba(253, 146, 221, 0.85) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.85) 75%,
-        transparent 75%
-    );
+    background: conic-gradient(transparent 0%,
+            rgba(253, 146, 221, 0.85) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.85) 75%,
+            transparent 75%);
     transform: translate(-50%, -50%) rotate(0deg);
     animation: borderSnake 2.8s linear infinite;
     z-index: 0;
@@ -871,13 +971,11 @@ p {
     left: 50%;
     width: 140px;
     height: 140px;
-    background: conic-gradient(
-        transparent 0%,
-        rgba(255, 255, 255, 0.8) 25%,
-        transparent 50%,
-        rgba(37, 211, 102, 0.8) 75%,
-        transparent 100%
-    );
+    background: conic-gradient(transparent 0%,
+            rgba(255, 255, 255, 0.8) 25%,
+            transparent 50%,
+            rgba(37, 211, 102, 0.8) 75%,
+            transparent 100%);
     transform: translate(-50%, -50%) rotate(0deg);
     animation: borderSnake 3.5s linear infinite;
     z-index: 0;
@@ -887,7 +985,8 @@ p {
     content: '';
     position: absolute;
     inset: 2px;
-    background-color: rgba(30, 160, 80, 0.45); /* Aumentada la transparencia (de 0.85 a 0.45) */
+    background-color: rgba(30, 160, 80, 0.45);
+    /* Aumentada la transparencia (de 0.85 a 0.45) */
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-radius: 50%;
@@ -908,17 +1007,28 @@ p {
 
 /* Motor de la rotaciÃ³n */
 @keyframes borderSnake {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 
 /* Cajas de contenido con efecto translÃºcido elegante */
-.services-list, .about-image-placeholder, .map-placeholder {
-    background: rgba(255, 255, 255, 0.4); /* Fondo mÃ¡s transparente */
-    backdrop-filter: blur(8px); /* Desenfoca el fondo rosado creando efecto cristal */
-    border: 1px solid rgba(255, 255, 255, 0.6); /* Borde blanco delgado para definir la forma */
-    box-shadow: 0 8px 32px rgba(58, 46, 41, 0.04); /* Sombra muy suave para dar profundidad */
+.services-list,
+.about-image-placeholder,
+.map-placeholder {
+    background: rgba(255, 255, 255, 0.4);
+    /* Fondo mÃ¡s transparente */
+    backdrop-filter: blur(8px);
+    /* Desenfoca el fondo rosado creando efecto cristal */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* Borde blanco delgado para definir la forma */
+    box-shadow: 0 8px 32px rgba(58, 46, 41, 0.04);
+    /* Sombra muy suave para dar profundidad */
 }
 
 
@@ -940,7 +1050,8 @@ p {
     font-weight: 600;
     font-size: 1.15rem;
     letter-spacing: 1px;
-    color: #4A3B32; /* Texto café oscuro sobre fondo dorado sólido */
+    color: #4A3B32;
+    /* Texto café oscuro sobre fondo dorado sólido */
 
     /* Fondo dorado/blanco 100% sólido sin transparencias */
     background: linear-gradient(135deg, #C29B62 0%, #FFF4E0 35%, #FFFFFF 50%, #FFF4E0 65%, #C29B62 100%);
@@ -1033,7 +1144,8 @@ p {
 
 @media (min-width: 768px) {
     .services-catalog {
-        grid-template-columns: 1fr 1fr; /* Dos columnas en PC */
+        grid-template-columns: 1fr 1fr;
+        /* Dos columnas en PC */
     }
 }
 
@@ -1081,11 +1193,14 @@ p {
 
 /* --- FAQ ESTILO ACORDEÃ“N ELEGANTE --- */
 .faq-item {
-    background: transparent; /* Quitamos el fondo sÃ³lido */
+    background: transparent;
+    /* Quitamos el fondo sÃ³lido */
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    border: none; /* Quitamos el recuadro completo */
-    border-bottom: 1px solid rgba(194, 155, 98, 0.3); /* Solo lÃ­nea fina abajo dorada */
+    border: none;
+    /* Quitamos el recuadro completo */
+    border-bottom: 1px solid rgba(194, 155, 98, 0.3);
+    /* Solo lÃ­nea fina abajo dorada */
     border-radius: 0;
     box-shadow: none;
     margin-bottom: 0;
@@ -1102,7 +1217,8 @@ p {
     color: var(--primary-color);
     padding: 16px 20px;
     cursor: pointer;
-    list-style: none; /* Oculta la flecha fea por defecto */
+    list-style: none;
+    /* Oculta la flecha fea por defecto */
     position: relative;
     outline: none;
 }
@@ -1203,7 +1319,8 @@ p {
 
 .hamburger-btn {
     display: flex !important;
-    position: static; /* Se alinea naturalmente a la derecha con justify-content: space-between */
+    position: static;
+    /* Se alinea naturalmente a la derecha con justify-content: space-between */
 }
 
 /* Si la pantalla estÃ¡ en vertical (incluso en tabletas de alta resoluciÃ³n como Tab S9 FE) */
@@ -1211,6 +1328,7 @@ p {
     .desktop-nav {
         display: none !important;
     }
+
     .hamburger-btn {
         display: flex !important;
     }
@@ -1218,7 +1336,8 @@ p {
 
 /* --- MODO ESCRITORIO REAL / TABLETA EN HORIZONTAL (LANDSCAPE) --- */
 /* Solo se activa si la pantalla mide 1025px o mÃ¡s Y estÃ¡ acostada (landscape) */
-@media (min-width: 900px) and (orientation: landscape), (min-width: 1025px) {
+@media (min-width: 900px) and (orientation: landscape),
+(min-width: 1025px) {
     .header {
         height: 70px;
         padding: 0 40px;
@@ -1229,11 +1348,13 @@ p {
     }
 
     .hamburger-btn {
-        display: none !important; /* Desaparecen las 3 rayitas */
+        display: none !important;
+        /* Desaparecen las 3 rayitas */
     }
 
     .desktop-nav {
-        display: block !important; /* Aparece la navegaciÃ³n horizontal */
+        display: block !important;
+        /* Aparece la navegaciÃ³n horizontal */
     }
 
     .desktop-menu-links {
@@ -1267,7 +1388,8 @@ p {
 }
 
 /* Botones Secundarios y "CÃ³mo llegar" (Reflejo Sutil) */
-.btn-secondary, .btn-indicaciones {
+.btn-secondary,
+.btn-indicaciones {
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -1279,7 +1401,8 @@ p {
     font-style: italic !important;
     font-size: 1.15rem !important;
     font-weight: 400 !important;
-    text-transform: none !important; /* Elimina mayÃºsculas planas */
+    text-transform: none !important;
+    /* Elimina mayÃºsculas planas */
     letter-spacing: 0.5px !important;
     border-radius: 40px;
     text-decoration: none;
@@ -1289,32 +1412,35 @@ p {
     margin-top: 20px;
 }
 
-.btn-secondary:active, .btn-indicaciones:active {
+.btn-secondary:active,
+.btn-indicaciones:active {
     transform: scale(0.96);
 }
 
 /* Reflejo giratorio suave (menos protagonismo) */
-.btn-secondary::before, .btn-indicaciones::before {
+.btn-secondary::before,
+.btn-indicaciones::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     width: 300px;
     height: 300px;
-    background: conic-gradient(
-        transparent 0%,
-        rgba(194, 155, 98, 0.5) 25%, /* Tono dorado suave en lugar de rosa */
-        transparent 50%,
-        rgba(255, 255, 255, 0.7) 75%,
-        transparent 100%
-    );
+    background: conic-gradient(transparent 0%,
+            rgba(194, 155, 98, 0.5) 25%,
+            /* Tono dorado suave en lugar de rosa */
+            transparent 50%,
+            rgba(255, 255, 255, 0.7) 75%,
+            transparent 100%);
     transform: translate(-50%, -50%) rotate(0deg);
-    animation: borderSnake 4.5s linear infinite; /* AnimaciÃ³n mÃ¡s lenta */
+    animation: borderSnake 4.5s linear infinite;
+    /* AnimaciÃ³n mÃ¡s lenta */
     z-index: -2;
 }
 
 /* Capa de cristal para que el texto sea legible */
-.btn-secondary::after, .btn-indicaciones::after {
+.btn-secondary::after,
+.btn-indicaciones::after {
     content: '';
     position: absolute;
     inset: 1px;
@@ -1326,7 +1452,8 @@ p {
     transition: background-color 0.3s;
 }
 
-.btn-secondary:hover::after, .btn-indicaciones:hover::after {
+.btn-secondary:hover::after,
+.btn-indicaciones:hover::after {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -1337,31 +1464,66 @@ p {
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    padding: 14px 32px;
+    font-family: var(--font-heading) !important;
+    font-style: italic !important;
+    font-size: 1.15rem !important;
+    font-weight: 400 !important;
+    color: var(--text-light);
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    background: transparent;
+    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.2s;
+}
+
+.btn-indicaciones::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: conic-gradient(transparent 0%, rgba(253, 146, 221, 0.9) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.9) 75%, transparent 75%);
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: borderSnake 2.5s linear infinite;
+    z-index: -2;
+}
+
+.btn-indicaciones::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-color: rgba(194, 155, 98, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 40px;
+    z-index: -1;
+    transition: background-color 0.3s;
+}
+
+.btn-indicaciones:hover::after {
+    background-color: rgba(194, 155, 98, 0.9);
 }
 
 .btn-indicaciones:hover {
     transform: translateX(-50%) scale(1.05);
 }
 
-/* Estilo para el tÃ­tulo en la barra de navegaciÃ³n */
 .header .logo {
-    background: linear-gradient(
-        to right,
-        #C29B62 0%,
-        #FFFFFF 50%,
-        #C29B62 100%
-    );
-    background-size: 200% auto;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    text-shadow: none;
-    opacity: 1;
-    visibility: visible;
-    animation: brilloOro 4s linear infinite;
-    font-size: 1.3rem;
-    white-space: nowrap; /* Evita que el nombre del salÃ³n se parta en 2 lÃ­neas */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.header .logo:hover .header-logo-svg {
+    transform: scale(1.08);
+}
+
+
 /* 2. SecciÃ³n UbicaciÃ³n: Mapa a la izquierda y Datos a la derecha */
 .location-section .content {
     max-width: 1100px;
@@ -1444,23 +1606,36 @@ p {
     font-size: 1.15rem !important;
     font-weight: 400 !important;
     letter-spacing: 0.5px !important;
-    color: #FFFFFF;
-    box-shadow: 0 6px 20px rgba(194, 155, 98, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-main);
+    background: rgba(194, 155, 98, 0.15); /* Cristal dorado */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(194, 155, 98, 0.4);
+    box-shadow: 0 6px 20px rgba(58, 46, 41, 0.05);
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(135deg, #C29B62 0%, #D8B47D 50%, #C29B62 100%);
-    background-size: 200% auto;
-    animation: brilloOro 4s linear infinite;
 }
 
 .channel-btn:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(194, 155, 98, 0.45);
+    background: rgba(194, 155, 98, 0.35);
+    color: #FFFFFF;
 }
 
 .channel-btn:active {
     transform: scale(0.97);
+}
+
+.channel-svg {
+    width: 24px;
+    height: 24px;
+    fill: #C29B62; /* Ícono dorado */
+    transition: fill 0.3s ease;
+}
+
+.channel-btn:hover .channel-svg {
+    fill: #FFFFFF;
 }
 
 .channel-icon {
@@ -1490,7 +1665,8 @@ p {
 
     .about-image-wrapper {
         margin-top: 0;
-        flex: 0 0 350px; /* Imagen mÃ¡s grande en PC */
+        flex: 0 0 350px;
+        /* Imagen mÃ¡s grande en PC */
     }
 
     .profile-pic {
@@ -1558,7 +1734,8 @@ p {
     /* 4. DistribuciÃ³n en Pantallas Grandes (Escritorio / Tablet) */
     .location-grid {
         display: grid;
-        grid-template-columns: 1.2fr 1fr; /* Mapa izquierda, contenido derecha */
+        grid-template-columns: 1.2fr 1fr;
+        /* Mapa izquierda, contenido derecha */
         align-items: center;
         gap: 40px;
     }
@@ -1570,7 +1747,8 @@ p {
     }
 
     .connect-channels {
-        grid-template-columns: repeat(4, 1fr); /* 4 botones alineados horizontalmente */
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 botones alineados horizontalmente */
     }
 }
 
@@ -1580,6 +1758,7 @@ p {
         display: none;
     }
 }
+
 /* Iconos SVG del catálogo */
 .service-icon {
     width: 20px;
@@ -1612,11 +1791,14 @@ p {
    SECCI�N DE FAQ FINAL CON DESPLAZAMIENTO NATURAL
    ========================================= */
 .faq-section-expandable {
-    height: auto !important; /* Desbloquea la altura fija */
+    height: auto !important;
+    /* Desbloquea la altura fija */
     min-height: 100dvh;
     scroll-snap-align: start;
-    padding: 100px 20px 140px 20px !important; /* Espacio para respirar y librar el header/botones */
-    display: block !important; /* Flujo de bloque natural */
+    padding: 100px 20px 140px 20px !important;
+    /* Espacio para respirar y librar el header/botones */
+    display: block !important;
+    /* Flujo de bloque natural */
 }
 
 .faq-full-content {
@@ -1730,7 +1912,8 @@ p {
 }
 
 .schedule-row.closed .hours {
-    color: #A3485E; /* Toque borgoña suave para "Cerrado" */
+    color: #A3485E;
+    /* Toque borgoña suave para "Cerrado" */
     font-style: italic;
 }
 
@@ -1748,7 +1931,8 @@ p {
    SECCIÓN GALERÍA (CARRUSEL INFINITO)
    ========================================= */
 .gallery-section {
-    padding: 80px 0 100px 0 !important; /* Quitamos el padding lateral para que las fotos toquen el borde */
+    padding: 80px 0 100px 0 !important;
+    /* Quitamos el padding lateral para que las fotos toquen el borde */
 }
 
 .gallery-content {
@@ -1757,7 +1941,8 @@ p {
 
 .gallery-content h2 {
     margin-bottom: 30px;
-    padding: 0 20px; /* Mantiene el título centrado y con márgenes */
+    padding: 0 20px;
+    /* Mantiene el título centrado y con márgenes */
 }
 
 /* Marco del carrusel con Glassmorphism */
@@ -1774,7 +1959,8 @@ p {
     box-shadow: 0 10px 30px rgba(58, 46, 41, 0.05);
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Separación vertical entre las dos filas de fotos */
+    gap: 20px;
+    /* Separación vertical entre las dos filas de fotos */
 }
 
 /* Animación de desplazamiento (Track Superior) */
@@ -1791,17 +1977,20 @@ p {
     gap: 20px;
     width: max-content;
     position: relative;
-    left: -120px; /* Desfase inicial para que no estén alineadas */
+    left: -120px;
+    /* Desfase inicial para que no estén alineadas */
     animation: scrollCarousel 65s linear infinite;
 }
 
 /* Pausar la animación cuando la clienta toca una foto */
-.track-top:hover, .track-bottom:hover {
+.track-top:hover,
+.track-bottom:hover {
     animation-play-state: paused;
 }
 
 .carousel-track img {
-    height: 160px; /* <-- Cambia este valor (estaba en 220px) */
+    height: 160px;
+    /* <-- Cambia este valor (estaba en 220px) */
     width: auto;
     border-radius: 12px;
     object-fit: cover;
@@ -1811,17 +2000,100 @@ p {
 }
 
 .carousel-track img:hover {
-    transform: scale(1.03); 
+    transform: scale(1.03);
 }
 
 @keyframes scrollCarousel {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 10px)); } 
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 10px));
+    }
 }
 
 /* Ajustes para pantallas grandes (Escritorio) */
 @media (min-width: 768px) {
     .carousel-track img {
-        height: 280px; /* Altura mayor en computadoras */
+        height: 280px;
+        /* Altura mayor en computadoras */
+    }
+}
+
+
+
+
+/* Recuperar el estilo elegante y dorado para el texto del logo */
+.logo-text {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.25rem;
+    /* Tamaño ligeramente reducido para equilibrar con el ícono */
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+
+    /* Efecto original de cristal dorado con brillo */
+    background: linear-gradient(to right, #C29B62 0%, #FFFFFF 50%, #C29B62 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: brilloOro 4s linear infinite;
+}
+
+
+
+/* Ajuste para pantallas móviles pequeñas */
+@media (max-width: 480px) {
+    .header-logo-svg {
+        height: 28px;
+    }
+
+    .logo-text {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+/* Carrusel Sección Nosotros */
+/* Carrusel Sección Nosotros - Corrección de círculo y texto */
+.about-carousel {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    width: 200px; /* Fija el ancho para que no desborde en móviles */
+    margin: 0 auto;
+}
+.about-carousel::-webkit-scrollbar {
+    display: none;
+}
+.about-carousel img {
+    flex: 0 0 200px; /* Fuerza a que sea un cuadrado perfecto de 200x200 */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(194, 155, 98, 0.3);
+    scroll-snap-align: center;
+    box-sizing: border-box; /* Evita que el borde/padding deforme la imagen */
+}
+
+@media (min-width: 768px) {
+    .about-carousel {
+        width: 350px; /* Fija el ancho en escritorio para no aplastar el texto izquierdo */
+        margin: 0;
+    }
+    .about-carousel img {
+        flex: 0 0 350px; /* Fuerza el cuadrado perfecto de 350x350 */
+        width: 350px;
+        height: 350px;
     }
 }

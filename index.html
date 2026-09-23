@@ -1,24 +1,52 @@
 ﻿<!DOCTYPE html>
 <html lang="es-MX">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AG Beauty Studio | Salón de Uñas, Pestañas y Belleza en Habitacional Electra, Tlalnepantla</title>
-    <meta name="description" content="Estudio de belleza en Habitacional Electra (Los Bastones), Tlalnepantla de Baz. Especialistas en uñas acrílicas, gelish, rubber, extensiones de pestañas, lash lifting, depilación con cera y alaciados cerca de Mundo E, Satélite y Santa Mónica.">
-    <meta name="keywords" content="uñas tlalnepantla, salon de belleza habitacional electra, uñas los bastones tlalnepantla, pestañas mundo e, lash lifting satelite, uñas santa monica, cejas viveros de la loma, uñas arboledas, salon de belleza pirules, depilacion con cera tlalnepantla">
+    <meta name="description"
+        content="Estudio de belleza en Habitacional Electra (Los Bastones), Tlalnepantla de Baz. Especialistas en uñas acrílicas, gelish, rubber, extensiones de pestañas, lash lifting, depilación con cera y alaciados cerca de Mundo E, Satélite y Santa Mónica.">
+    <meta name="keywords"
+        content="uñas tlalnepantla, salon de belleza habitacional electra, uñas los bastones tlalnepantla, pestañas mundo e, lash lifting satelite, uñas santa monica, cejas viveros de la loma, uñas arboledas, salon de belleza pirules, depilacion con cera tlalnepantla">
     <meta property="og:title" content="AG Beauty Studio | Salón de Belleza">
     <meta property="og:description" content="Agenda tu cita. Especialistas en uñas, pestañas, cejas y cuidado capilar.">
     <meta property="og:image" content="https://agbeauty.studio/assets/images/og-image.jpg">
     <meta property="og:url" content="https://agbeauty.studio">
     <meta property="og:type" content="website">
 
+    <!-- Favicon para navegadores y Google Search -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="header">
-        <div class="logo">AG Beauty Studio</div>
+
+        <div class="logo">
+            
+                <svg class="header-logo-svg" viewBox="310 200 800 400" xmlns="http://www.w3.org/2000/svg" aria-label="Logo AG">
+                    aria-label="Logo AG">
+                    <defs>
+                        <linearGradient id="goldGradientLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#C29B62" />
+                            <stop offset="35%" stop-color="#F5E3C0" />
+                            <stop offset="65%" stop-color="#E2BA7D" />
+                            <stop offset="100%" stop-color="#8F6A34" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#goldGradientLogo)" d="M664.06083,169.13241l1.94777,0.84747l34.5034,81.35709l17.80821,39.54859l1.66952,4.51984l0.27825,3.67237c5.71347,-4.36917 12.20604,-7.94739 19.47773,-10.73462c8.2363,-3.50287 17.1404,-6.32777 26.71231,-8.4747l12.79965,-2.25992l10.01712,-0.56498l0.55651,-0.56498h28.38183l0.55651,0.56498l9.46061,0.56498l0.55651,0.56498l13.35616,1.69494l22.81677,5.6498l23.37327,7.90972l20.86899,9.03968v43.22096l-4.45205,9.88715h-8.62585l-0.83476,-0.84747c-4.93436,-14.19982 -12.4472,-25.78191 -22.53851,-34.74626l-12.24314,-9.03968l-18.36471,-8.4747l-22.26026,-5.08482l-18.92122,-1.12996l-0.55651,0.56498h-10.01712l-0.55651,0.56498l-10.57362,1.12996l-18.36471,5.08482c-11.83504,4.18085 -21.9449,10.11314 -30.3296,17.79686l9.46061,20.90425l32.83388,78.53219l8.9041,15.81943l5.84332,6.49727l5.56506,3.38988l10.29537,2.25992v8.19221l-1.66952,5.36731h-66.50252l-0.27825,-0.28249v-13.84201l10.29537,-1.69494c2.74543,-0.97929 4.87871,-2.58008 6.39982,-4.80233v-5.08482l-1.66952,-5.6498l-8.06934,-17.79686l-7.79109,-0.56498l-0.55651,-0.56498l-12.79965,-1.69494l-18.92122,-5.08482l-14.19091,-5.08482c0.742,1.12996 0.92752,3.10739 0.55651,5.93229l-0.55651,0.56498l-0.55651,9.03968l-0.55651,0.56498l-0.55651,21.46923l-0.55651,0.56498l1.11301,0.28249l0.55651,12.14707l0.55651,0.56498v3.95486l2.22603,12.42956l6.12157,18.64433c7.34589,17.21306 17.45576,31.62004 30.3296,43.22096c5.15696,4.74583 10.90753,8.88901 17.2517,12.42956l10.01712,5.08482l13.35616,5.08482l19.47773,4.51984l10.01712,0.56498l0.55651,0.56498h18.36471l0.55651,-0.56498l11.13013,-0.56498l18.92122,-3.38988l36.45117,-10.16964v-105.36874l-1.66952,-7.34474c-0.96461,-2.78723 -2.54138,-4.95299 -4.7303,-6.49727l-7.23458,-2.8249h-5.28681v-10.45213l3.33904,-5.93229l3.06079,-0.56498h60.1027c1.55822,1.05463 2.02197,3.22038 1.39127,6.49727l-1.11301,3.38988l-5.28681,7.06225c-5.56506,0 -9.73886,1.41245 -12.5214,4.23735l-1.66952,6.21478v103.10882l38.12069,-10.73462h2.22603l2.22603,-1.12996l21.14725,-4.51984h3.33902l3.33905,-1.12996h3.89555l5.00856,-1.12996h5.56506l0.55651,-0.56498l25.5993,-0.56498l0.55649,0.56498h6.67809l0.55651,0.56498l11.68664,1.12996l16.13869,3.95486l24.48628,9.60466l16.97343,9.60466v4.80233l-0.83475,0.84747l-12.24314,5.6498l-26.71231,-12.99454l-20.03425,-6.77976l-18.3647,-3.38988l-22.81677,-0.56498l-0.55652,0.56498h-7.23457l-0.55651,0.56498l-12.24314,1.12996l-23.92978,5.08482l-42.29449,11.86458l-40.06847,12.42956l-28.38183,7.34474l-12.79965,2.25992h-3.33904l-0.55651,0.56498l-11.68664,0.56498l-0.55651,0.56498h-27.26882l-0.55651,-0.56498h-6.12157l-0.55651,-0.56498h-3.89555l-12.24314,-2.25992c-9.57191,-2.14692 -18.47601,-4.97182 -26.71231,-8.4747c-17.28881,-7.68373 -31.85072,-18.13585 -43.68576,-31.35638c-11.31563,-12.99454 -20.21973,-28.43731 -26.71231,-46.32834l-4.45205,-15.81943l-3.33905,-15.81943v-3.95486l-1.113,-5.08482v-28.81397l0.55651,-0.56498v-5.6498l0.55649,-0.56498l1.11303,-11.86458l1.11301,-4.23735l-17.52997,-6.21478l-8.90409,-2.25992l-10.01712,-1.12996l-0.55652,-0.56498h-6.12156l-0.55651,-0.56498h-12.79966l-0.55649,0.56498h-5.56506l-0.83477,0.84747l-17.80819,44.06843l-2.78253,9.60466l-1.11301,9.03968l1.39127,3.67237l2.78253,1.12996l8.3476,1.12996l2.50428,2.54241l3.33904,4.51984v6.77976l-0.83477,0.84747h-5.00854l-0.55652,-0.56498h-51.19858l-6.39982,-6.49727v-7.34474c0,-0.37666 0.83476,-0.47081 2.50428,-0.28249l8.9041,-2.8249c4.15525,-2.18459 7.58703,-5.10365 10.29537,-8.75719l6.67806,-12.42956l17.25171,-42.37349l-1.39127,-0.28249l-13.91266,2.8249l-9.46061,2.8249h-2.22604l-37.28592,10.73462l-28.93834,7.34474l-27.26882,5.6498l-16.69519,2.25992l-0.55651,0.56498l-15.02567,1.12996l-0.55651,0.56498h-26.71232l-0.55649,-0.56498h-5.00857l-0.55649,-0.56498l-12.79965,-1.69494l-11.13013,-2.8249l-16.13869,-5.6498l-11.13013,-5.6498l-12.5214,-10.45213c-1.18721,-3.65354 0.01855,-4.87765 3.61729,-3.67237l16.13867,7.34474l18.92123,5.6498l11.68662,2.25992l7.2346,0.56498l0.55651,0.56498l21.70375,0.56498l0.55651,-0.56498h8.3476l0.55651,-0.56498l17.80821,-1.69494l24.48628,-4.51984l45.63353,-11.2996l2.22603,-1.12996l55.09414,-14.68948l17.2517,-3.38988h3.33904l3.06079,-1.41245l51.1986,-124.86054l5.56506,-11.86458l21.14725,-51.97814zM660.44354,224.50043l-2.22604,3.38988c-2.22603,6.77976 -4.82305,13.18286 -7.79108,19.20931l-9.46061,24.85911l-35.61643,86.44191l-0.55649,2.8249h12.24314l0.55651,0.56498h5.00856l0.55651,0.56498l10.0171,1.12996l16.1387,4.51984l17.25169,6.77976l-0.55649,-0.56498c-0.37101,-3.38988 0,-6.02646 1.11301,-7.90972l8.9041,-19.77429c6.30707,-11.67625 14.09816,-21.84589 23.37327,-30.50891zM713.83545,341.4064l-19.05093,45.00499c0,0 25.64547,2.6036 42.86458,10.41439c17.2191,7.81079 -23.81365,-55.41938 -23.81365,-55.41938z" />
+                </svg>
+            
+            <span class="logo-text">Beauty Studio</span>
+        </div>
+
+
+        <!-- Resto del header sin cambios -->
         <nav class="desktop-nav">
             <ul class="desktop-menu-links">
                 <li><a href="#inicio" class="nav-link-desktop">Inicio</a></li>
@@ -61,15 +89,18 @@
         <section id="inicio" class="screen-section hero-section">
             <picture class="hero-bg">
                 <source media="(min-width: 768px)" srcset="./assets/Banner-Horizontal.jpg">
-                <img src="./assets/Banner-vertical-2.jpg" alt="Manicura y uñas elegantes en AG Beauty Studio" class="hero-bg-img">
+                <img src="./assets/Banner-vertical-2.jpg" alt="Manicura y uñas elegantes en AG Beauty Studio"
+                    class="hero-bg-img">
             </picture>
             <div id="particles-container"></div>
             <div class="hero-overlay"></div>
             <div class="content fade-in">
                 <h1>Resalta tu belleza única</h1>
-                <p class="hero-subtitle">Especialistas en uñas, pestañas, cejas y tratamientos capilares.</p>
+                <p class="hero-subtitle">Tu estudio de belleza en Tlalnepantla. Especialistas en uñas, pestañas,
+                    depilación con cera y cuidado capilar.</p>
             </div>
-            <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1" class="btn-animado hero-btn">Agendar ahora</a>
+            <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1"
+                class="btn-animado hero-btn">Agendar ahora</a>
         </section>
 
         <!-- SECCIÓN 2: Nosotros -->
@@ -78,11 +109,26 @@
                 <h2>Conoce a tu especialista</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>Con más de 5 años de experiencia, en AG Beauty Studio nos enfocamos en brindarte un servicio personalizado. Somos Lashistas certificadas y expertas en el cuidado de tu piel.</p>
-                        <p>Trabajamos con los mejores productos para asegurar resultados impecables.</p>
+                        <p>Con más de 10 años de experiencia profesional y 5 años al frente de AG Beauty Studio en la
+                            zona de Los Bastones (Habitacional Electra), nos enfocamos en brindarte un servicio
+                            completamente personalizado. Diseñamos nuestro estudio boutique como un espacio íntimo y
+                            relajante, operando bajo un esquema de atención privada para que disfrutes de una
+                            experiencia exclusiva, sin prisas ni aglomeraciones.</p>
+                        <p>Queremos ser tu estudio de confianza cerca de Satélite y Mundo E. Nuestra prioridad es el
+                            cuidado integral: aplicamos técnicas y productos de alta calidad para consentirte, cuidando
+                            al máximo la estructura de tus uñas y pestañas. Buscamos resultados impecables, duraderos y
+                            seguros.</p>
                     </div>
                     <div class="about-image-wrapper">
-                        <img src="./assets/foto-especialista.jpg" alt="Especialista de AG Beauty Studio" class="profile-pic">
+                        <div class="about-carousel">
+                            <!-- Puedes agregar más fotos aquí, repitiendo la etiqueta <img> -->
+                            <img src="./assets/foto-especialista.jpg" alt="Especialista de AG Beauty Studio"
+                                loading="lazy">
+                            <img src="./img/sillon-rosa-pedicure-letrero.jpg" alt="Instalaciones del estudio"
+                                loading="lazy">
+                            <img src="./img/manicurista-trabajando-salon-belleza.jpg" alt="Atención personalizada"
+                                loading="lazy">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,61 +143,109 @@
                     <!-- Fila Superior (12 fotos únicas duplicadas) -->
                     <div class="carousel-track track-top">
                         <!-- Primera tanda -->
-                        <img src="./img/letrero-salon-angela-garcia.jpg" alt="Letrero luminoso del salón Angela Garcia Lashes & Nails" loading="lazy">
-                        <img src="./img/esmaltes-unas-gelish.jpg" alt="Variedad de esmaltes y gelish para manicura" loading="lazy">
-                        <img src="./img/extensiones-pestanas-nagaraku.jpg" alt="Material para extensiones de pestañas y limpieza facial" loading="lazy">
-                        <img src="./img/proceso-manicura-limado.jpg" alt="Manicurista profesional limando y preparando uñas" loading="lazy">
-                        <img src="./img/muestrario-colores-gelish.jpg" alt="Muestrario de colores para uñas en gel y acrílico" loading="lazy">
-                        <img src="./img/tips-unas-acrilicas-transparentes.jpg" alt="Caja organizadora con tips transparentes para extensiones de uñas acrílicas" loading="lazy">
-                        <img src="./img/manicurista-trabajando-salon-belleza.jpg" alt="Manicurista profesional trabajando en diseño de uñas en AG Beauty Studio" loading="lazy">
-                        
-                        <img src="./img/moldeado-tips-unas-gel.jpg" alt="Manicurista ajustando tip transparente para uñas de gel" loading="lazy">
-                        <img src="./img/camilla-extensiones-pestanas-rosa.jpg" alt="Camilla rosa para aplicación de extensiones de pestañas y lash lifting" loading="lazy">
-                        <img src="./img/sillon-rosa-pedicure-letrero.jpg" alt="Sillón rosa de pedicure bajo el letrero luminoso de AG Beauty Studio" loading="lazy">
-                        <img src="./img/productos-skincare-farmasi.jpg" alt="Productos de cuidado facial y corporal Farmasi y Dr. C. Tuna a la venta" loading="lazy">
-                        
+                        <img src="./img/letrero-salon-angela-garcia.jpg"
+                            alt="Letrero luminoso del salón Angela Garcia Lashes & Nails" loading="lazy">
+                        <img src="./img/esmaltes-unas-gelish.jpg" alt="Variedad de esmaltes y gelish para manicura"
+                            loading="lazy">
+                        <img src="./img/extensiones-pestanas-nagaraku.jpg"
+                            alt="Material para extensiones de pestañas y limpieza facial" loading="lazy">
+                        <img src="./img/proceso-manicura-limado.jpg"
+                            alt="Manicurista profesional limando y preparando uñas" loading="lazy">
+                        <img src="./img/muestrario-colores-gelish.jpg"
+                            alt="Muestrario de colores para uñas en gel y acrílico" loading="lazy">
+                        <img src="./img/tips-unas-acrilicas-transparentes.jpg"
+                            alt="Caja organizadora con tips transparentes para extensiones de uñas acrílicas"
+                            loading="lazy">
+                        <img src="./img/manicurista-trabajando-salon-belleza.jpg"
+                            alt="Manicurista profesional trabajando en diseño de uñas en AG Beauty Studio"
+                            loading="lazy">
+
+                        <img src="./img/moldeado-tips-unas-gel.jpg"
+                            alt="Manicurista ajustando tip transparente para uñas de gel" loading="lazy">
+                        <img src="./img/camilla-extensiones-pestanas-rosa.jpg"
+                            alt="Camilla rosa para aplicación de extensiones de pestañas y lash lifting" loading="lazy">
+                        <img src="./img/sillon-rosa-pedicure-letrero.jpg"
+                            alt="Sillón rosa de pedicure bajo el letrero luminoso de AG Beauty Studio" loading="lazy">
+                        <img src="./img/productos-skincare-farmasi.jpg"
+                            alt="Productos de cuidado facial y corporal Farmasi y Dr. C. Tuna a la venta"
+                            loading="lazy">
+
                         <!-- Segunda tanda (Espejo para el bucle infinito) -->
-                        <img src="./img/letrero-salon-angela-garcia.jpg" alt="Letrero luminoso del salón Angela Garcia Lashes & Nails" loading="lazy">
-                        <img src="./img/esmaltes-unas-gelish.jpg" alt="Variedad de esmaltes y gelish para manicura" loading="lazy">
-                        <img src="./img/extensiones-pestanas-nagaraku.jpg" alt="Material para extensiones de pestañas y limpieza facial" loading="lazy">
-                        <img src="./img/proceso-manicura-limado.jpg" alt="Manicurista profesional limando y preparando uñas" loading="lazy">
-                        <img src="./img/muestrario-colores-gelish.jpg" alt="Muestrario de colores para uñas en gel y acrílico" loading="lazy">
-                        <img src="./img/tips-unas-acrilicas-transparentes.jpg" alt="Caja organizadora con tips transparentes para extensiones de uñas acrílicas" loading="lazy">
-                        <img src="./img/manicurista-trabajando-salon-belleza.jpg" alt="Manicurista profesional trabajando en diseño de uñas en AG Beauty Studio" loading="lazy">
-                        
-                        <img src="./img/moldeado-tips-unas-gel.jpg" alt="Manicurista ajustando tip transparente para uñas de gel" loading="lazy">
-                        <img src="./img/camilla-extensiones-pestanas-rosa.jpg" alt="Camilla rosa para aplicación de extensiones de pestañas y lash lifting" loading="lazy">
-                        <img src="./img/sillon-rosa-pedicure-letrero.jpg" alt="Sillón rosa de pedicure bajo el letrero luminoso de AG Beauty Studio" loading="lazy">
-                        <img src="./img/productos-skincare-farmasi.jpg" alt="Productos de cuidado facial y corporal Farmasi y Dr. C. Tuna a la venta" loading="lazy">
+                        <img src="./img/letrero-salon-angela-garcia.jpg"
+                            alt="Letrero luminoso del salón Angela Garcia Lashes & Nails" loading="lazy">
+                        <img src="./img/esmaltes-unas-gelish.jpg" alt="Variedad de esmaltes y gelish para manicura"
+                            loading="lazy">
+                        <img src="./img/extensiones-pestanas-nagaraku.jpg"
+                            alt="Material para extensiones de pestañas y limpieza facial" loading="lazy">
+                        <img src="./img/proceso-manicura-limado.jpg"
+                            alt="Manicurista profesional limando y preparando uñas" loading="lazy">
+                        <img src="./img/muestrario-colores-gelish.jpg"
+                            alt="Muestrario de colores para uñas en gel y acrílico" loading="lazy">
+                        <img src="./img/tips-unas-acrilicas-transparentes.jpg"
+                            alt="Caja organizadora con tips transparentes para extensiones de uñas acrílicas"
+                            loading="lazy">
+                        <img src="./img/manicurista-trabajando-salon-belleza.jpg"
+                            alt="Manicurista profesional trabajando en diseño de uñas en AG Beauty Studio"
+                            loading="lazy">
+
+                        <img src="./img/moldeado-tips-unas-gel.jpg"
+                            alt="Manicurista ajustando tip transparente para uñas de gel" loading="lazy">
+                        <img src="./img/camilla-extensiones-pestanas-rosa.jpg"
+                            alt="Camilla rosa para aplicación de extensiones de pestañas y lash lifting" loading="lazy">
+                        <img src="./img/sillon-rosa-pedicure-letrero.jpg"
+                            alt="Sillón rosa de pedicure bajo el letrero luminoso de AG Beauty Studio" loading="lazy">
+                        <img src="./img/productos-skincare-farmasi.jpg"
+                            alt="Productos de cuidado facial y corporal Farmasi y Dr. C. Tuna a la venta"
+                            loading="lazy">
                     </div>
 
                     <!-- Fila Inferior Desfasada (11 fotos únicas duplicadas) -->
                     <div class="carousel-track track-bottom">
                         <!-- Primera tanda -->
-                        <img src="./img/pedicure-spa-esmalte-blanco.jpg" alt="Aplicación de esmalte blanco en servicio de pedicure spa" loading="lazy">
-                        <img src="./img/colores-unas-glitter-abanico.jpg" alt="Opciones de esmalte con glitter y brillos para uñas" loading="lazy">
-                        <img src="./img/tarjeta-ag-beauty-studio.jpg" alt="Tarjeta de presentación de AG Beauty Studio con paleta de colores" loading="lazy">
-                        <img src="./img/cojin-manicura-ag-beauty.jpg" alt="Mesa de manicura con cojín rosa y muestrarios" loading="lazy">
-                        <img src="./img/aplicacion-acrilico-unas.jpg" alt="Proceso de aplicación de tip y acrílico en manos" loading="lazy">
-                        
-                        
-                        <img src="./img/curado-unas-lampara-uv-led.jpg" alt="Curado de uñas de gelish con mini lámpara UV LED" loading="lazy">
-                        <img src="./img/unas-acrilicas-blanco-lechoso.jpg" alt="Diseño de uñas acrílicas almendradas en tono blanco lechoso" loading="lazy">
-                        <img src="./img/herramientas-manicura-pedicure.jpg" alt="Herramientas de manicura esterilizadas y esmaltes de colores" loading="lazy">
-                        <img src="./img/joyeria-pulseras-doradas-accesorios.jpg" alt="Exhibidor de pulseras y cadenas doradas en el área de accesorios del salón" loading="lazy">
-                        
+                        <img src="./img/pedicure-spa-esmalte-blanco.jpg"
+                            alt="Aplicación de esmalte blanco en servicio de pedicure spa" loading="lazy">
+                        <img src="./img/colores-unas-glitter-abanico.jpg"
+                            alt="Opciones de esmalte con glitter y brillos para uñas" loading="lazy">
+                        <img src="./img/tarjeta-ag-beauty-studio.jpg"
+                            alt="Tarjeta de presentación de AG Beauty Studio con paleta de colores" loading="lazy">
+                        <img src="./img/cojin-manicura-ag-beauty.jpg"
+                            alt="Mesa de manicura con cojín rosa y muestrarios" loading="lazy">
+                        <img src="./img/aplicacion-acrilico-unas.jpg"
+                            alt="Proceso de aplicación de tip y acrílico en manos" loading="lazy">
+
+
+                        <img src="./img/curado-unas-lampara-uv-led.jpg"
+                            alt="Curado de uñas de gelish con mini lámpara UV LED" loading="lazy">
+                        <img src="./img/unas-acrilicas-blanco-lechoso.jpg"
+                            alt="Diseño de uñas acrílicas almendradas en tono blanco lechoso" loading="lazy">
+                        <img src="./img/herramientas-manicura-pedicure.jpg"
+                            alt="Herramientas de manicura esterilizadas y esmaltes de colores" loading="lazy">
+                        <img src="./img/joyeria-pulseras-doradas-accesorios.jpg"
+                            alt="Exhibidor de pulseras y cadenas doradas en el área de accesorios del salón"
+                            loading="lazy">
+
                         <!-- Segunda tanda (Espejo para el bucle infinito) -->
-                        <img src="./img/pedicure-spa-esmalte-blanco.jpg" alt="Aplicación de esmalte blanco en servicio de pedicure spa" loading="lazy">
-                        <img src="./img/colores-unas-glitter-abanico.jpg" alt="Opciones de esmalte con glitter y brillos para uñas" loading="lazy">
-                        <img src="./img/tarjeta-ag-beauty-studio.jpg" alt="Tarjeta de presentación de AG Beauty Studio con paleta de colores" loading="lazy">
-                        <img src="./img/cojin-manicura-ag-beauty.jpg" alt="Mesa de manicura con cojín rosa y muestrarios" loading="lazy">
-                        <img src="./img/aplicacion-acrilico-unas.jpg" alt="Proceso de aplicación de tip y acrílico en manos" loading="lazy">
-                        
-                        
-                        <img src="./img/curado-unas-lampara-uv-led.jpg" alt="Curado de uñas de gelish con mini lámpara UV LED" loading="lazy">
-                        <img src="./img/unas-acrilicas-blanco-lechoso.jpg" alt="Diseño de uñas acrílicas almendradas en tono blanco lechoso" loading="lazy">
-                        <img src="./img/herramientas-manicura-pedicure.jpg" alt="Herramientas de manicura esterilizadas y esmaltes de colores" loading="lazy">
-                        <img src="./img/joyeria-pulseras-doradas-accesorios.jpg" alt="Exhibidor de pulseras y cadenas doradas en el área de accesorios del salón" loading="lazy">
+                        <img src="./img/pedicure-spa-esmalte-blanco.jpg"
+                            alt="Aplicación de esmalte blanco en servicio de pedicure spa" loading="lazy">
+                        <img src="./img/colores-unas-glitter-abanico.jpg"
+                            alt="Opciones de esmalte con glitter y brillos para uñas" loading="lazy">
+                        <img src="./img/tarjeta-ag-beauty-studio.jpg"
+                            alt="Tarjeta de presentación de AG Beauty Studio con paleta de colores" loading="lazy">
+                        <img src="./img/cojin-manicura-ag-beauty.jpg"
+                            alt="Mesa de manicura con cojín rosa y muestrarios" loading="lazy">
+                        <img src="./img/aplicacion-acrilico-unas.jpg"
+                            alt="Proceso de aplicación de tip y acrílico en manos" loading="lazy">
+
+
+                        <img src="./img/curado-unas-lampara-uv-led.jpg"
+                            alt="Curado de uñas de gelish con mini lámpara UV LED" loading="lazy">
+                        <img src="./img/unas-acrilicas-blanco-lechoso.jpg"
+                            alt="Diseño de uñas acrílicas almendradas en tono blanco lechoso" loading="lazy">
+                        <img src="./img/herramientas-manicura-pedicure.jpg"
+                            alt="Herramientas de manicura esterilizadas y esmaltes de colores" loading="lazy">
+                        <img src="./img/joyeria-pulseras-doradas-accesorios.jpg"
+                            alt="Exhibidor de pulseras y cadenas doradas en el área de accesorios del salón"
+                            loading="lazy">
                     </div>
                 </div>
             </div>
@@ -163,23 +257,41 @@
                 <h2>Nuestro Catálogo</h2>
                 <div class="services-catalog">
                     <div class="service-category">
-                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C12 2 15 7 15 11C15 15 13 18 12 18C11 18 9 15 9 11C9 7 12 2 12 2Z"></path><path d="M12 18C12 18 15 20 15 22H9C9 20 12 18 12 18Z"></path></svg> Uñas</h3>
+                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2C12 2 15 7 15 11C15 15 13 18 12 18C11 18 9 15 9 11C9 7 12 2 12 2Z"></path>
+                                <path d="M12 18C12 18 15 20 15 22H9C9 20 12 18 12 18Z"></path>
+                            </svg> Uñas</h3>
                         <p>Manicura, Pedicure, Acrílico, Gelish, Rubber, Soft Gel, Retoques y Retiros.</p>
                     </div>
                     <div class="service-category">
-                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg> Pestañas y Cejas</h3>
-                        <p>Extensiones (Clásica, Híbrida, Mega volumen, Hawaiano), Lash Lifting, Diseño con Henna y Laminado.</p>
+                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg> Pestañas y Cejas</h3>
+                        <p>Extensiones (Clásica, Híbrida, Mega volumen, Hawaiano), Lash Lifting, Diseño con Henna y
+                            Laminado.</p>
                     </div>
                     <div class="service-category">
-                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 8H9L12 2Z"></path><path d="M12 22C17 22 21 18 21 13C21 8 17 4 12 4C7 4 3 8 3 13C3 18 7 22 12 22Z"></path></svg> Depilación</h3>
-                        <p>Facial completa (Ceja, Bigote, Patillas) y Corporal (Axila, Media pierna, Pierna completa).</p>
+                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2L15 8H9L12 2Z"></path>
+                                <path d="M12 22C17 22 21 18 21 13C21 8 17 4 12 4C7 4 3 8 3 13C3 18 7 22 12 22Z"></path>
+                            </svg> Depilación</h3>
+                        <p>Facial completa (Ceja, Bigote, Patillas) y Corporal (Axila, Media pierna, Pierna completa).
+                        </p>
                     </div>
                     <div class="service-category">
-                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 4 6 4 10C4 16 12 22 12 22C12 22 20 16 20 10C20 6 16 2 12 2Z"></path></svg> Capilares</h3>
+                        <h3><svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2C8 2 4 6 4 10C4 16 12 22 12 22C12 22 20 16 20 10C20 6 16 2 12 2Z"></path>
+                            </svg> Capilares</h3>
                         <p>Tratamientos antifrizz, Hidratación, Cabello chino y Alaciado progresivo.</p>
                     </div>
                 </div>
-                <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1" class="btn-secondary">Ver lista completa de precios y agendar</a>
+                <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1"
+                    class="btn-secondary">Ver lista completa de precios y agendar</a>
             </div>
         </section>
 
@@ -190,21 +302,26 @@
                 <div class="reviews-container">
                     <div class="review-card">
                         <div class="stars">★★★★★</div>
-                        <p>"Llevo meses haciéndome las uñas rubber y acrílicas aquí en Electra. No se despostillan para nada y el trato es súper detallista y cuidadoso. ¡El mejor salón de la zona!"</p>
+                        <p>"Llevo meses haciéndome las uñas rubber y acrílicas aquí en Electra. No se despostillan para
+                            nada y el trato es súper detallista y cuidadoso. ¡El mejor salón de la zona!"</p>
                         <h4>- Ana L.</h4>
                     </div>
                     <div class="review-card">
                         <div class="stars">★★★★★</div>
-                        <p>"Me hice el set de pestañas volumen hawaiano y laminado de cejas. Quedaron súper naturales, tupidas y me duraron intactas semanas. El estudio es hermoso y muy limpio."</p>
+                        <p>"Me hice el set de pestañas volumen hawaiano y laminado de cejas. Quedaron súper naturales,
+                            tupidas y me duraron intactas semanas. El estudio es hermoso y muy limpio."</p>
                         <h4>- María G.</h4>
                     </div>
                     <div class="review-card">
                         <div class="stars">★★★★★</div>
-                        <p>"Súper profesionales. Me realicé un alaciado progresivo y depilación con cera en axilas y piernas; cero irritación y mi cabello quedó suave y sin frizz. 100% recomendado cerca de Satélite."</p>
+                        <p>"Súper profesionales. Me realicé un alaciado progresivo y depilación con cera en axilas y
+                            piernas; cero irritación y mi cabello quedó suave y sin gota de frizz. 100% recomendado
+                            cerca de Satélite."</p>
                         <h4>- Sofía R.</h4>
                     </div>
                 </div>
-                <a href="https://maps.app.goo.gl/5u8mhJ344Rk4gRUf9" target="_blank" class="btn-secondary">Ver más en Google Maps</a>
+                <a href="https://maps.app.goo.gl/5u8mhJ344Rk4gRUf9" target="_blank" class="btn-secondary">Ver más en
+                    Google Maps</a>
             </div>
         </section>
 
@@ -214,13 +331,16 @@
                 <h2>Visítanos</h2>
                 <div class="location-grid">
                     <div class="location-details info-card">
-                        <p><strong>Dirección:</strong><br>Sindicato Nacional de Electricistas 30, Habitacional Electra, Los Bastones, Tlalnepantla, Méx.</p>
+                        <p><strong>Dirección:</strong><br>Sindicato Nacional de Electricistas 30, Habitacional Electra,
+                            Los Bastones, Tlalnepantla, Méx.</p>
                         <p><strong>Referencias locales:</strong><br>A minutos de Mundo E, Satélite y Santa Mónica.</p>
-                        <p><strong>Horarios:</strong><br>Lun - Vie: 10:00 AM - 7:00 PM<br>Sáb: 9:00 AM - 7:00 PM<br>Dom: Cerrado</p>
+                        <p><strong>Horarios:</strong><br>Lun - Vie: 10:00 AM - 7:00 PM<br>Sáb: 9:00 AM - 7:00 PM<br>Dom:
+                            Cerrado</p>
                     </div>
                     <div class="map-placeholder">
                         <div id="map"></div>
-                        <a href="https://maps.app.goo.gl/5u8mhJ344Rk4gRUf9" target="_blank" class="btn-indicaciones">Cómo llegar</a>
+                        <a href="https://maps.app.goo.gl/5u8mhJ344Rk4gRUf9" target="_blank"
+                            class="btn-indicaciones">Cómo llegar</a>
                     </div>
                 </div>
             </div>
@@ -231,17 +351,35 @@
             <div class="content">
                 <h2>Contáctanos</h2>
                 <div class="connect-channels">
-                    <a href="https://wa.me/525548030506?text=Hola,%20quisiera%20pedir%20informes%20para%20agendar%20una%20cita" target="_blank" class="channel-btn whatsapp-btn">
-                        <svg class="channel-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp
+                    <a href="https://wa.me/525548030506?text=Hola,%20quisiera%20pedir%20informes%20para%20agendar%20una%20cita"
+                        target="_blank" class="channel-btn whatsapp-btn">
+                        <svg class="channel-svg" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg> WhatsApp
                     </a>
-                    <a href="https://www.instagram.com/angelagarcia_beautystudio/" target="_blank" class="channel-btn instagram-btn">
-                        <svg class="channel-svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram
+                    <a href="https://www.instagram.com/angelagarcia_beautystudio/" target="_blank"
+                        class="channel-btn instagram-btn">
+                        <svg class="channel-svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg> Instagram
                     </a>
-                    <a href="https://www.facebook.com/angelalashesoficial/" target="_blank" class="channel-btn facebook-btn">
-                        <svg class="channel-svg" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg> Facebook
+                    <a href="https://www.facebook.com/angelalashesoficial/" target="_blank"
+                        class="channel-btn facebook-btn">
+                        <svg class="channel-svg" viewBox="0 0 24 24">
+                            <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                        </svg> Facebook
                     </a>
-                    <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1" class="channel-btn agenda-btn">
-                        <svg class="channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Agenda Virtual
+                    <a href="https://listamicita.com/reserva.html?salon=Kg1zLvVVoWOoGkftYvEo8g5jdgn1"
+                        class="channel-btn agenda-btn">
+                        <svg class="channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg> Agenda Virtual
                     </a>
                 </div>
             </div>
@@ -252,63 +390,127 @@
             <div class="content faq-full-content">
                 <h2>Preguntas Frecuentes</h2>
                 <div class="faq-accordion-container">
+                    <!-- PREGUNTAS NUEVAS (ENFOCADAS EN SEO) -->
                     <details class="faq-item">
                         <summary>¿Cuál es la diferencia entre Uñas Rubber y Acrílico tradicional?</summary>
-                        <p>La base Rubber es una capa de gel flexible y autonivelable que aporta fuerza y volumen a tu uña natural evitando que se quiebre. El acrílico es una pasta moldeable que se seca al aire, pensada para alargar la uña o hacer extensiones con formas esculpidas resistentes.</p>
+                        <p>La base Rubber es un gel flexible y autonivelable que aporta fuerza a tu uña natural evitando
+                            que se quiebre, ideal para un acabado ligero. El acrílico es una técnica de esculpido más
+                            rígida, pensada para alargar la uña o realizar reconstrucciones completas que requieren
+                            máxima estructura.</p>
                     </details>
                     <details class="faq-item">
-                        <summary>¿Qué incluye la aplicación de Uñas Soft Gel?</summary>
-                        <p>Las Soft Gel son tips fabricados con gel que cubren completamente la uña natural, adheridos con base gel y curados en lámpara LED. Dan un acabado ultraligero y natural sin necesidad de limado abrasivo.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>¿Por qué puede aumentar el costo de las uñas acrílicas o gelish?</summary>
-                        <p>El costo publicado cubre la aplicación base en un solo tono. Si deseas efectos como ojo de gato, cromo, efecto azúcar, pedería fina, diseño a mano alzada o largo adicional, el precio se adapta según el tiempo y materiales requeridos.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>¿Cuándo es necesario hacer un retiro de acrílico o rubber en lugar de retoque?</summary>
-                        <p>El retoque se realiza cada 2 a 3 semanas sobre el crecimiento natural. Si existe levantamiento prematuro, filtración de humedad o deseas descansar la uña, es indispensable realizar un retiro profesional cuidadoso para no dañar tu queratina natural.</p>
+                        <summary>¿Por qué los diseños de uñas o efectos especiales tienen un costo extra?</summary>
+                        <p>Nuestro precio base cubre la aplicación en un tono liso. Si deseas técnicas de mano alzada,
+                            pedrería, efecto ojo de gato, cromo o francés perfecto, el costo se ajusta debido a que
+                            requieren materiales premium, precisión milimétrica y mayor tiempo de sesión en nuestro
+                            estudio en Tlalnepantla.</p>
                     </details>
                     <details class="faq-item">
                         <summary>¿Qué diferencia hay entre extensiones de pestañas y Lash Lifting?</summary>
-                        <p>El Lash Lifting moldea y curva tus propias pestañas naturales hacia arriba por 6 a 8 semanas, ideal si buscas comodidad y efecto rímel diario. Las extensiones adhieren abanicos o fibras individuales sobre cada pestaña para incrementar el grosor, longitud y volumen.</p>
+                        <p>El Lash Lifting curva tus propias pestañas naturales desde la raíz con un efecto de rímel que
+                            dura de 6 a 8 semanas. En cambio, las extensiones (clásicas, híbridas o mega volumen)
+                            consisten en adherir fibras sintéticas a cada pestaña natural para aumentar drásticamente la
+                            longitud, densidad y volumen.</p>
                     </details>
                     <details class="faq-item">
-                        <summary>¿Qué caracteriza al volumen hawaiano frente a las pestañas clásicas o mega volumen?</summary>
-                        <p>Las clásicas aplican una fibra sobre una pestaña natural (efecto rímel fino). El volumen hawaiano utiliza abanicos especiales en forma de flor que aportan un look esponjoso, aireado y con textura texturizada intermedia sin sentirse pesado.</p>
+                        <summary>¿Cuánto duran las extensiones de pestañas con volumen hawaiano?</summary>
+                        <p>El volumen hawaiano, conocido por su acabado esponjoso y texturizado, dura entre 3 y 4
+                            semanas dependiendo del ciclo natural de tus pestañas. Para mantener el diseño tupido,
+                            recomendamos a nuestras clientas agendar su retoque entre los 15 y 20 días.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿En qué se diferencia el diseño con Henna y el Laminado de cejas?</summary>
+                        <p>La Henna tiñe de forma temporal el vello y la piel (durando hasta 14 días), ideal para
+                            rellenar huecos y dar un efecto de maquillaje. El laminado es un tratamiento que peina,
+                            alinea y fija los vellos rebeldes hacia arriba durante 4 a 6 semanas, dando la ilusión de
+                            una ceja mucho más gruesa y orgánica.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Qué zonas cubre la depilación con cera y cuánto duran los resultados?</summary>
+                        <p>Realizamos depilación facial completa (cejas, bigote, patillas) y corporal (axilas, media
+                            pierna y pierna completa). Utilizamos cera de alta calidad que retira el vello desde la
+                            raíz, retrasando su crecimiento entre 3 y 4 semanas y dejando tu piel suave y sin
+                            irritación.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Cómo funciona el alaciado progresivo y el tratamiento para cabello chino?</summary>
+                        <p>El alaciado progresivo sella la cutícula con calor, reduciendo el volumen y relajando las
+                            ondas hasta un 90% por varios meses, perfecto si vives en zonas húmedas. Por otro lado,
+                            nuestro tratamiento intensivo para cabello chino hidrata y nutre profundamente el rizo
+                            natural, devolviéndole su elasticidad, definición y eliminando el frizz sin alterar su
+                            forma.</p>
+                    </details>
+
+                    <!-- PREGUNTAS ORIGINALES -->
+                    <details class="faq-item">
+                        <summary>¿Qué incluye la aplicación de Uñas Soft Gel?</summary>
+                        <p>Las Soft Gel son tips fabricados con gel que cubren completamente la uña natural, adheridos
+                            con base gel y curados en lámpara LED. Dan un acabado ultraligero y natural sin necesidad de
+                            limado abrasivo.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Por qué puede aumentar el costo de las uñas acrílicas o gelish?</summary>
+                        <p>El costo publicado cubre la aplicación base en un solo tono. Si deseas efectos como ojo de
+                            gato, cromo, efecto azúcar, pedería fina, diseño a mano alzada o largo adicional, el precio
+                            se adapta según el tiempo y materiales requeridos.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Cuándo es necesario hacer un retiro de acrílico o rubber en lugar de retoque?
+                        </summary>
+                        <p>El retoque se realiza cada 2 a 3 semanas sobre el crecimiento natural. Si existe
+                            levantamiento prematuro, filtración de humedad o deseas descansar la uña, es indispensable
+                            realizar un retiro profesional cuidadoso para no dañar tu queratina natural.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>¿Qué caracteriza al volumen hawaiano frente a las pestañas clásicas o mega volumen?
+                        </summary>
+                        <p>Las clásicas aplican una fibra sobre una pestaña natural (efecto rímel fino). El volumen
+                            hawaiano utiliza abanicos especiales en forma de flor que aportan un look esponjoso, aireado
+                            y con textura texturizada intermedia sin sentirse pesado.</p>
                     </details>
                     <details class="faq-item">
                         <summary>¿Cuánto dura la aplicación de Henna en cejas vs. el Laminado de cejas?</summary>
-                        <p>La henna pigmenta la piel (de 6 a 12 días) y el vello (hasta 3 semanas), aportando un sombreado definido. El laminado es un tratamiento químico que alinea, peina y fija los vellos rebeldes hacia arriba durante 4 a 6 semanas sin añadir pigmento por sí solo.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>¿Qué zonas cubre la depilación con cera y cuánto dura el resultado?</summary>
-                        <p>Realizamos depilación facial (cejas, bigote, patillas y rostro completo) y corporal (axilas, media pierna y pierna completa). El vello se retira de raíz con cera tibia de grado cosmético, retrasando su aparición entre 3 y 4 semanas.</p>
+                        <p>La henna pigmenta la piel (de 6 a 12 días) y el vello (hasta 3 semanas), aportando un
+                            sombreado definido. El laminado es un tratamiento químico que alinea, peina y fija los
+                            vellos rebeldes hacia arriba durante 4 a 6 semanas sin añadir pigmento por sí solo.</p>
                     </details>
                     <details class="faq-item">
                         <summary>¿Cómo funciona el alaciado progresivo y en qué se diferencia del anti frizz?</summary>
-                        <p>El alaciado progresivo sella y transforma la cutícula capilar con calor, relajando las ondas hasta un 90% con duración de meses. El tratamiento anti frizz e hidratación nutre profundamente sin modificar la estructura del cabello, manteniendo el cuerpo o el rizo natural pero eliminando la esponjosidad.</p>
+                        <p>El alaciado progresivo sella y transforma la cutícula capilar con calor, relajando las ondas
+                            hasta un 90% con duración de meses. El tratamiento anti frizz e hidratación nutre
+                            profundamente sin modificar la estructura del cabello, manteniendo el cuerpo o el rizo
+                            natural pero eliminando la esponjosidad.</p>
                     </details>
                     <details class="faq-item">
                         <summary>¿En qué consiste el tratamiento especializado para cabello chino?</summary>
-                        <p>Es una terapia intensiva de hidratación, proteínas y lípidos diseñada para cabellos con patrón ondulado o rizado. Aporta elasticidad, brillo y definición al rizo sin perder volumen natural ni apelmazar.</p>
+                        <p>Es una terapia intensiva de hidratación, proteínas y lípidos diseñada para cabellos con
+                            patrón ondulado o rizado. Aporta elasticidad, brillo y definición al rizo sin perder volumen
+                            natural ni apelmazar.</p>
                     </details>
                 </div>
             </div>
         </section>
     </main>
 
-    <a href="https://listamicita.com/agbeauty" id="btn-flotante-circular" class="floating-action-btn btn-agenda-float" aria-label="Agendar Cita">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor" class="floating-icon">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+    <a href="https://listamicita.com/agbeauty" id="btn-flotante-circular" class="floating-action-btn btn-agenda-float"
+        aria-label="Agendar Cita">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.6" stroke="currentColor"
+            class="floating-icon">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
         </svg>
     </a>
 
-    <a href="https://wa.me/525548030506?text=Hola,%20quisiera%20pedir%20informes%20para%20agendar%20una%20cita" id="btn-flotante-whatsapp" class="floating-action-btn btn-whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+    <a href="https://wa.me/525548030506?text=Hola,%20quisiera%20pedir%20informes%20para%20agendar%20una%20cita"
+        id="btn-flotante-whatsapp" class="floating-action-btn btn-whatsapp-float" target="_blank"
+        aria-label="Contactar por WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" class="floating-icon">
-            <path d="M12.031 2C6.516 2 2.025 6.491 2.025 12.006c0 1.947.562 3.766 1.536 5.305L2 22l4.834-1.517c1.474.887 3.208 1.393 5.061 1.393 5.516 0 10.007-4.491 10.007-10.006S17.547 2 12.031 2zm0 18.25c-1.622 0-3.14-.476-4.425-1.303l-.317-.202-3.239 1.016 1.042-3.14-.216-.334a8.204 8.204 0 01-1.282-4.281c0-4.549 3.701-8.25 8.25-8.25 4.549 0 8.25 3.701 8.25 8.25s-3.701 8.25-8.063 8.25z"/>
+            <path
+                d="M12.031 2C6.516 2 2.025 6.491 2.025 12.006c0 1.947.562 3.766 1.536 5.305L2 22l4.834-1.517c1.474.887 3.208 1.393 5.061 1.393 5.516 0 10.007-4.491 10.007-10.006S17.547 2 12.031 2zm0 18.25c-1.622 0-3.14-.476-4.425-1.303l-.317-.202-3.239 1.016 1.042-3.14-.216-.334a8.204 8.204 0 01-1.282-4.281c0-4.549 3.701-8.25 8.25-8.25 4.549 0 8.25 3.701 8.25 8.25s-3.701 8.25-8.063 8.25z" />
         </svg>
     </a>
 
     <script src="script.js"></script>
 </body>
+
 </html>
